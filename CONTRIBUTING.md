@@ -12,10 +12,8 @@ All releases are tagged in git. To see the releases available to you see the cha
 
 ## Pull requests
 
-- <./pulls>
+- [Pull requests](../../pulls)
 
 ## Issues
 
-Need to report an issue? Use the github issues:
-
-- <./issues>
+Need to report an issue? Use the [GitHub issues](../../issues)
