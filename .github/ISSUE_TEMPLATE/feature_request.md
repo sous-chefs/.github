@@ -6,19 +6,22 @@ labels: Feature Request
 assignees: ''
 
 ---
+### :speaking_head: Foreword
 
-## Problem Statement
+Thank for taking the time to fill this feature request fully. Without it we may not be able to , and the issue may be closed without resolution.
 
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+## :person_frowning: Problem Statement
 
-## Possible Solution
+A clear and concise description of what the problem is. E.g. I'm always frustrated when [...]
+
+## :grey_question: Possible Solution
 
 A clear and concise description of what you want to happen.
 
-## Describe alternatives you've considered
+## :arrow_heading_up: Describe alternatives you've considered
 
 A clear and concise description of any alternative solutions or features you've considered.
 
-## Additional context
+## :heavy_plus_sign: Additional context
 
 Add any other context about the problem here. e.g. related issues or existing pull requests.

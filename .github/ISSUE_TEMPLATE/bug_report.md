@@ -6,19 +6,23 @@ labels: Bug, Needs Triage
 assignees: ''
 ---
 
-## :beetle: Brief Description
+### :speaking_head: Foreword
+
+Thank for taking the time to fill this bug report fully. Without it we may not be able to fix the bug, and the issue may be closed without resolution.
+
+## :ghost: Brief Description
 
 A clear and concise description of what the bug is.
 
-## :chef: Cookbook version
+## :pancakes: Cookbook version
 
 Version of the cookbook where you are encountering the issue.
 
-## Chef-Infra Version
+## :woman_cook:  Chef-Infra Version
 
 Version of chef-client in your environment.
 
-## Platform details
+## :tophat: Platform details
 
 Operating system distribution and release version. Cloud provider if running in the cloud.
 
@@ -31,10 +35,10 @@ Steps to reproduce the behavior:
 3. Scroll down to '....'
 4. See error
 
-## Expected behavior
+## :police_car: Expected behavior
 
 A clear and concise description of what you expected to happen.
 
-## Additional context
+## :heavy_plus_sign: Additional context
 
 Add any other context about the problem here. e.g. related issues or existing pull requests.
