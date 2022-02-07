@@ -15,7 +15,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Install Chef
         uses: actionshub/chef-install@main
-      - name: chef gem install -N "${{ inputs.gems }}"
+      - name: Install Gems
+        run: chef gem install -N "${{ inputs.gems }}"
         if: ${{ inputs.gems }} != ""
       - name: Run RSpec
         run: chef exec rspec -f j -o tmp/rspec_results.json -f p
