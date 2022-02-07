@@ -18,6 +18,8 @@ jobs:
       - name: Install Gems
         run: chef gem install -N "${{ inputs.gems }}"
         if: ${{ inputs.gems }} != ""
+        env:
+          CHEF_LICENSE: accept-no-persist
       - name: Run RSpec
         run: chef exec rspec -f j -o tmp/rspec_results.json -f p
         env:
