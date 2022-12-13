@@ -18,7 +18,7 @@ jobs:
         uses: actionshub/chef-install@main
       - name: Install Gems
         run: chef gem install -N "${{ inputs.gems }}"
-        if: ${{ inputs.gems }} != ""
+        if: ${{ github.event.inputs.gems != '' }}
         env:
           CHEF_LICENSE: accept-no-persist
       - name: Run RSpec
