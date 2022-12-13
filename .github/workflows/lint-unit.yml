@@ -6,6 +6,7 @@ name: Lint & Unit test
       gems:
         required: false
         type: string
+        default: ""
 
 jobs:
   rspec:
