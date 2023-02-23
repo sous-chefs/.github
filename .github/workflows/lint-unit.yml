@@ -7,10 +7,15 @@ name: Lint & Unit test
         required: false
         type: string
         default: ""
+      platform:
+        required: false
+        type: string
+        default: "ubuntu-latest"
 
 jobs:
   rspec:
-    runs-on: ubuntu-latest
+    # Some RSpec tests require a Windows environment
+    runs-on: ${{ inputs.platform }}
     steps:
       - name: Check out code
         uses: actions/checkout@v3
