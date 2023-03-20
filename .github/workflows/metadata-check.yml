@@ -13,3 +13,5 @@ jobs:
 
       - name: Check Metadata
         uses: damacus/check-chef-metadata-action@0.1.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
