@@ -7,6 +7,10 @@
 jobs:
   check-metadata:
     runs-on: ubuntu-latest
+    permissions:
+      checks: write # required for the status check
+      pull-requests: write # required for the PR comment
+      statuses: write # required for the status check
     steps:
       - name: Checkout
         uses: actions/checkout@v3
