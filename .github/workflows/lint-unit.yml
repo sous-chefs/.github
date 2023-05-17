@@ -79,6 +79,7 @@ jobs:
           base-branch: "main"
 
   check-metadata:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     permissions:
       checks: write # required for the status check
