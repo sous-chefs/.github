@@ -97,6 +97,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Check Metadata
-        uses: damacus/check-chef-metadata-action@v1
+        uses: damacus/check-chef-metadata-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
