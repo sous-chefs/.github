@@ -15,16 +15,25 @@ name: Lint & Unit test
         required: false
         type: string
         default: "latest"
+      fail_on_link_errors:
+        required: false
+        type: boolean
+        default: false
+      link-reporter:
+        required: false
+        type: string
+        default: "github-pr-review" # local, github,pr-check, github-check, github-pr-review
 
 jobs:
   rspec:
     # Some RSpec tests require a Windows environment
     runs-on: ${{ inputs.platform }}
+    name: runner / RSpec ${{ inputs.platform }}
     steps:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Install Chef
-        uses: actionshub/chef-install@3.0.0
+        uses: actionshub/chef-install@3.0.1
         with:
           version: ${{ inputs.chef_workstation_version }}
       - name: Install Gems
@@ -45,11 +54,12 @@ jobs:
 
   cookstyle:
     runs-on: ubuntu-latest
+    name: runner / Cookstyle
     steps:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Install Chef
-        uses: actionshub/chef-install@3.0.0
+        uses: actionshub/chef-install@3.0.1
         with:
           version: ${{ inputs.chef_workstation_version }}
       - name: Run Cookstyle
@@ -57,37 +67,40 @@ jobs:
         env:
           CHEF_LICENSE: accept-no-persist
 
-  yamllint:
+  check-yaml:
     runs-on: ubuntu-latest
+    name: runner / yamllint
     steps:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Run yaml Lint
         uses: actionshub/yamllint@main
 
-  markdownlint-cli2:
+  check-markdown:
     runs-on: ubuntu-latest
+    name: runner / markdownlint
     steps:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Run Markdown Lint
-        uses: DavidAnson/markdownlint-cli2-action@v16
+        uses: DavidAnson/markdownlint-cli2-action@v18
         with:
           globs: "**/*.md"
 
-  markdown-link-check:
+  check-links:
+    name: runner / linkspector
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: gaurav-nelson/github-action-markdown-link-check@1.0.15
+      - name: Run linkspector
+        uses: umbrelladocs/action-linkspector@v1
         with:
-          use-quiet-mode: "yes"
-          use-verbose-mode: "yes"
-          check-modified-files-only: "yes"
-          base-branch: "main"
+          reporter: ${{ inputs.link-reporter }}
+          fail_on_error: ${{ inputs.fail_on_link_errors }}
 
   check-metadata:
     if: github.event_name == 'pull_request'
+    name: runner / Check Metadata
     runs-on: ubuntu-latest
     permissions:
       checks: write # required for the status check
