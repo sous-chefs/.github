@@ -22,7 +22,7 @@ name: Lint & Unit test
       link-reporter:
         required: false
         type: string
-        default: "github-pr-review" # local, github,pr-check, github-check, github-pr-review
+        default: "github-pr-review" # local, github, pr-check, github-check, github-pr-review
 
 jobs:
   rspec:
