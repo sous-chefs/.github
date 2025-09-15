@@ -65,7 +65,7 @@ jobs:
 
       - name: Publish to Chef Supermarket
         run: |
-          knife supermarket share ${{ github.repository }} \
+          knife supermarket share ${{ github.event.repository.name }} \
             --supermarket-site https://supermarket.chef.io \
             --key ~/.chef/supermarket.pem \
             --user ${{ secrets.CHEF_SUPERMARKET_USER }} \
