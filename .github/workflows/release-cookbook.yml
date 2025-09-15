@@ -3,6 +3,10 @@ name: release-please
 
 "on":
   workflow_call:
+    inputs:
+      token:
+        required: true
+        type: string
 
 jobs:
   release-please:
@@ -15,7 +19,7 @@ jobs:
       - uses: googleapis/release-please-action@v4
         id: release
         with:
-          token: ${{ secrets.PORTER_GITHUB_TOKEN }}
+          token: ${{ inputs.token }}
 
       - name: Checkout
         uses: actions/checkout@v5

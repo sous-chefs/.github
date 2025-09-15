@@ -3,6 +3,10 @@ name: "Prevent file change"
 
 "on":
   workflow_call:
+    inputs:
+      token:
+        required: true
+        type: string
 
 jobs:
   prevent-metadata-change:
@@ -13,7 +17,7 @@ jobs:
       - name: Prevent metadata.rb file change
         uses: xalvarez/prevent-file-change-action@v2
         with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ inputs.token }}
           pattern: metadata.rb
           trustedAuthors: &maintainers bmhughes,damacus,kitchen-porter,MarkGibbons,ramereth,Stromweld,xorima
 
@@ -25,7 +29,7 @@ jobs:
       - name: Prevent workflow file change
         uses: xalvarez/prevent-file-change-action@v2
         with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ inputs.token }}
           pattern: .github/workflows
           trustedAuthors: *maintainers
           closePR: true
