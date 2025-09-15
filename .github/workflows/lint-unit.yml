@@ -1,3 +1,4 @@
+---
 name: Lint & Unit test
 
 "on":
@@ -18,7 +19,7 @@ name: Lint & Unit test
       fail_on_link_errors:
         required: false
         type: boolean
-        default: false
+        default: false # Don't fail on link errors as release-please adds links to the PR which don't exists yet (but are correct!)
       link-reporter:
         required: false
         type: string
