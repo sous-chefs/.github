@@ -15,7 +15,7 @@ jobs:
       - name: Prevent metadata.rb file change
         uses: xalvarez/prevent-file-change-action@v3
         with:
-          githubToken: ${{ secrets.token }}
+          githubToken: ${{ secrets.token || secrets.GITHUB_TOKEN }}
           pattern: metadata.rb
           trustedAuthors: &maintainers bmhughes,damacus,kitchen-porter,MarkGibbons,ramereth,Stromweld,xorima
 
@@ -27,7 +27,7 @@ jobs:
       - name: Prevent workflow file change
         uses: xalvarez/prevent-file-change-action@v3
         with:
-          githubToken: ${{ secrets.token }}
+          githubToken: ${{ secrets.token || secrets.GITHUB_TOKEN }}
           pattern: .github/workflows
           trustedAuthors: *maintainers
           closePR: true
