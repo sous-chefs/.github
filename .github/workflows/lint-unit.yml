@@ -7,9 +7,6 @@ name: Lint & Unit test
       token: {required: true}
 
     inputs:
-      token:
-        required: true
-        type: string
       gems:
         required: false
         type: string
