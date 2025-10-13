@@ -3,16 +3,10 @@ name: release-please
 
 "on":
   workflow_call:
-    inputs:
-      token:
-        required: true
-        type: string
-      supermarket_user:
-        required: true
-        type: string
-      supermarket_key:
-        required: true
-        type: string
+    secrets:
+      token: {required: true}
+      supermarket_user: {required: true}
+      supermarket_key: {required: true}
 
 jobs:
   release-please:
@@ -25,7 +19,7 @@ jobs:
       - uses: googleapis/release-please-action@v4
         id: release
         with:
-          token: ${{ inputs.token }}
+          token: ${{ secrets.token }}
 
       - name: Checkout
         uses: actions/checkout@v5
@@ -70,7 +64,7 @@ jobs:
       - name: Configure Chef credentials
         run: |
           mkdir -p ~/.chef
-          echo "${{ inputs.supermarket_key }}" > ~/.chef/supermarket.pem
+          echo "${{ secrets.supermarket_key }}" > ~/.chef/supermarket.pem
           chmod 600 ~/.chef/supermarket.pem
 
       - name: Publish to Chef Supermarket
@@ -78,5 +72,5 @@ jobs:
           knife supermarket share ${{ github.event.repository.name }} \
             --supermarket-site https://supermarket.chef.io \
             --key ~/.chef/supermarket.pem \
-            --user ${{ inputs.supermarket_user }} \
+            --user ${{ secrets.supermarket_user }} \
             --cookbook-path ../
