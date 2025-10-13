@@ -30,7 +30,7 @@ jobs:
         id: upload
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.repository }}-${{ steps.release.outputs.tag_name }}
+          name: ${{ github.event.repository.name }}-${{ steps.release.outputs.tag_name }}
           path: |
             .
             !.git/
@@ -48,7 +48,7 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         uses: actions/attest-build-provenance@v3
         with:
-          subject-name: ${{ github.repository }}-${{ steps.release.outputs.tag_name }}
+          subject-name: ${{ github.event.repository.name }}-${{ steps.release.outputs.tag_name }}
           subject-digest: sha256:${{ steps.upload.outputs.artifact-digest }}
 
   publish-to-supermarket:
