@@ -1,12 +1,10 @@
 ---
-name: 'Validate PR'
+name: "Validate PR"
 
 "on":
   workflow_call:
-    inputs:
-      token:
-        required: true
-        type: string
+    secrets:
+      token: { required: true }
 
 jobs:
   main:
@@ -17,4 +15,4 @@ jobs:
     steps:
       - uses: amannn/action-semantic-pull-request@v6
         env:
-          GITHUB_TOKEN: ${{ inputs.token }}
+          GITHUB_TOKEN: ${{ secrets.token }}

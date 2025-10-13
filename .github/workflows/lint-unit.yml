@@ -3,10 +3,10 @@ name: Lint & Unit test
 
 "on":
   workflow_call:
+    secrets:
+      token: {required: true}
+
     inputs:
-      token:
-        required: true
-        type: string
       gems:
         required: false
         type: string
