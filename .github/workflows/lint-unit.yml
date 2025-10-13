@@ -4,6 +4,9 @@ name: Lint & Unit test
 "on":
   workflow_call:
     inputs:
+      token:
+        required: true
+        type: string
       gems:
         required: false
         type: string
@@ -113,4 +116,4 @@ jobs:
       - name: Check Metadata
         uses: damacus/check-chef-metadata-action@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ inputs.token }}

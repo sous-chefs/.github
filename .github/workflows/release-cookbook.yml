@@ -7,6 +7,12 @@ name: release-please
       token:
         required: true
         type: string
+      supermarket_user:
+        required: true
+        type: string
+      supermarket_key:
+        required: true
+        type: string
 
 jobs:
   release-please:
@@ -64,7 +70,7 @@ jobs:
       - name: Configure Chef credentials
         run: |
           mkdir -p ~/.chef
-          echo "${{ secrets.CHEF_SUPERMARKET_KEY }}" > ~/.chef/supermarket.pem
+          echo "${{ inputs.supermarket_key }}" > ~/.chef/supermarket.pem
           chmod 600 ~/.chef/supermarket.pem
 
       - name: Publish to Chef Supermarket
@@ -72,5 +78,5 @@ jobs:
           knife supermarket share ${{ github.event.repository.name }} \
             --supermarket-site https://supermarket.chef.io \
             --key ~/.chef/supermarket.pem \
-            --user ${{ secrets.CHEF_SUPERMARKET_USER }} \
+            --user ${{ inputs.supermarket_user }} \
             --cookbook-path ../
