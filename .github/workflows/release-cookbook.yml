@@ -77,37 +77,31 @@ jobs:
             --cookbook-path ../
 
   notify-slack:
-      needs: [release-please, publish-to-supermarket]
-      runs-on: ubuntu-latest
-      id: notify-slack
-      steps:
-        - name: Post text to a Slack channel
-          uses: slackapi/slack-github-action@v2.1.1
-          with:
-            method: chat.postMessage
-            token: ${{ secrets.SLACK_BOT_TOKEN }}
-            payload: |
-              channel: ${{ secrets.SLACK_CHANNEL_ID }}
-              text: "New release of ${{ github.event.repository.name }} cookbook: ${{ needs.release-please.outputs.tag_name }}"
-              attachments:
-                - color: "28a745"
-                  fields:
-                    - title: "Status"
-                      short: true
-                      value: "Completed"
+    needs: [release-please, publish-to-supermarket]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post text to a Slack channel
+        id: notify-slack
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: ${{ secrets.SLACK_CHANNEL_ID }}
+            text: "New release of ${{ github.event.repository.name }} cookbook: ${{ needs.release-please.outputs.tag_name }}"
+            attachments:
+              - color: "28a745"
+                fields:
+                  - title: "Status"
+                    short: true
+                    value: "Completed"
 
-    notify-slack-details:
-      needs: notify-slack
-      name: Reply to release message with release details
-      runs-on: ubuntu-latest
-      id: notify-slack-details
-      steps:
-        - name: Reply to release message with release details
-          uses: slackapi/slack-github-action@v2.1.1
-          with:
-            method: chat.postMessage
-            token: ${{ secrets.SLACK_BOT_TOKEN }}
-            payload: |
-              channel: ${{ secrets.SLACK_CHANNEL_ID }}
-              thread_ts: "${{ steps.notify-slack.outputs.ts }}"
-              text: "${{ needs.release-please.outputs.body }}"
+      - name: Reply to release message with release details
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: ${{ secrets.SLACK_CHANNEL_ID }}
+            thread_ts: "${{ steps.notify-slack.outputs.ts }}"
+            text: "${{ needs.release-please.outputs.body }}"
