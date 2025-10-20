@@ -7,6 +7,8 @@ name: release-please
       token: {required: true}
       supermarket_user: {required: true}
       supermarket_key: {required: true}
+      slack_bot_token: {required: true}
+      slack_channel_id: {required: true}
 
 jobs:
   release-please:
@@ -85,9 +87,9 @@ jobs:
         uses: slackapi/slack-github-action@v2.1.1
         with:
           method: chat.postMessage
-          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          token: ${{ secrets.slack_bot_token }}
           payload: |
-            channel: ${{ secrets.SLACK_CHANNEL_ID }}
+            channel: ${{ secrets.slack_channel_id }}
             text: "New release of ${{ github.event.repository.name }} cookbook: ${{ needs.release-please.outputs.tag_name }}"
             attachments:
               - color: "28a745"
@@ -100,8 +102,8 @@ jobs:
         uses: slackapi/slack-github-action@v2.1.1
         with:
           method: chat.postMessage
-          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          token: ${{ secrets.slack_bot_token }}
           payload: |
-            channel: ${{ secrets.SLACK_CHANNEL_ID }}
+            channel: ${{ secrets.slack_channel_id }}
             thread_ts: "${{ steps.notify-slack.outputs.ts }}"
             text: "${{ needs.release-please.outputs.body }}"
