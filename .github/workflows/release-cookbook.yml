@@ -7,8 +7,8 @@ name: release-please
       token: {required: true}
       supermarket_user: {required: true}
       supermarket_key: {required: true}
-      slack_bot_token: {required: true}
-      slack_channel_id: {required: true}
+      slack_bot_token: {required: false}
+      slack_channel_id: {required: false}
 
 jobs:
   release-please:
@@ -80,6 +80,7 @@ jobs:
 
   notify-slack:
     needs: [release-please, publish-to-supermarket]
+    if: ${{ secrets.slack_bot_token != '' }}
     runs-on: ubuntu-latest
     steps:
       - name: Post text to a Slack channel
@@ -100,6 +101,7 @@ jobs:
 
       - name: Reply to release message with release details
         uses: slackapi/slack-github-action@v2.1.1
+        if: ${{ secrets.slack_bot_token != '' }}
         with:
           method: chat.postMessage
           token: ${{ secrets.slack_bot_token }}
