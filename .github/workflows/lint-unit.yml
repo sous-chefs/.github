@@ -35,7 +35,7 @@ jobs:
     name: runner / RSpec ${{ inputs.platform }}
     steps:
       - name: Check out code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Install Chef
         uses: actionshub/chef-install@3.0.1
         with:
@@ -61,7 +61,7 @@ jobs:
     name: runner / Cookstyle
     steps:
       - name: Check out code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Install Chef
         uses: actionshub/chef-install@3.0.1
         with:
@@ -76,7 +76,7 @@ jobs:
     name: runner / yamllint
     steps:
       - name: Check out code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Run yaml Lint
         uses: actionshub/yamllint@main
 
@@ -85,9 +85,9 @@ jobs:
     name: runner / markdownlint
     steps:
       - name: Check out code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Run Markdown Lint
-        uses: DavidAnson/markdownlint-cli2-action@v20
+        uses: DavidAnson/markdownlint-cli2-action@v21
         with:
           globs: "**/*.md"
 
@@ -95,7 +95,7 @@ jobs:
     name: runner / linkspector
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Run linkspector
         uses: umbrelladocs/action-linkspector@v1
         with:
@@ -112,7 +112,7 @@ jobs:
       statuses: write # required for the status check
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Check Metadata
         uses: damacus/check-chef-metadata-action@v2
         with:

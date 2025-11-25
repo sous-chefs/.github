@@ -25,13 +25,13 @@ jobs:
           token: ${{ secrets.token }}
 
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         if: ${{ steps.release.outputs.release_created }}
 
       - name: Upload cookbook as artifact
         if: ${{ steps.release.outputs.release_created }}
         id: upload
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ github.event.repository.name }}-${{ steps.release.outputs.tag_name }}
           path: |
@@ -62,7 +62,7 @@ jobs:
       image: chef/chefworkstation:latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Configure Chef credentials
         run: |

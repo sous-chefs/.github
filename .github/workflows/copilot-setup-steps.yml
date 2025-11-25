@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install Chef Workstation
         uses: actionshub/chef-install@3.0.1
@@ -20,7 +20,7 @@ jobs:
           chef --version
 
       - name: markdownlint-cli2-action
-        uses: DavidAnson/markdownlint-cli2-action@v20
+        uses: DavidAnson/markdownlint-cli2-action@v21
 
       - name: Install cookbook dependencies
         run: berks install
