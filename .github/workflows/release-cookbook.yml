@@ -31,7 +31,7 @@ jobs:
       - name: Upload cookbook as artifact
         if: ${{ steps.release.outputs.release_created }}
         id: upload
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ github.event.repository.name }}-${{ steps.release.outputs.tag_name }}
           path: |
@@ -49,7 +49,7 @@ jobs:
 
       - name: Generate artifact attestation
         if: ${{ steps.release.outputs.release_created }}
-        uses: actions/attest-build-provenance@v3
+        uses: actions/attest-build-provenance@v4
         with:
           subject-name: ${{ github.event.repository.name }}-${{ steps.release.outputs.tag_name }}
           subject-digest: sha256:${{ steps.upload.outputs.artifact-digest }}
@@ -84,7 +84,7 @@ jobs:
     steps:
       - name: Post text to a Slack channel
         id: notify-slack
-        uses: slackapi/slack-github-action@v2.1.1
+        uses: slackapi/slack-github-action@v3.0.1
         with:
           method: chat.postMessage
           token: ${{ secrets.slack_bot_token }}
@@ -99,7 +99,7 @@ jobs:
                     value: "Completed"
 
       - name: Reply to release message with release details
-        uses: slackapi/slack-github-action@v2.1.1
+        uses: slackapi/slack-github-action@v3.0.1
         with:
           method: chat.postMessage
           token: ${{ secrets.slack_bot_token }}

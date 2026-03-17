@@ -37,7 +37,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v6
       - name: Install Chef
-        uses: actionshub/chef-install@3.0.1
+        uses: actionshub/chef-install@6.0.0
         with:
           version: ${{ inputs.chef_workstation_version }}
       - name: Install Gems
@@ -63,7 +63,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v6
       - name: Install Chef
-        uses: actionshub/chef-install@3.0.1
+        uses: actionshub/chef-install@6.0.0
         with:
           version: ${{ inputs.chef_workstation_version }}
       - name: Run Cookstyle
