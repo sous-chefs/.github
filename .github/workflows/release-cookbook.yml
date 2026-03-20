@@ -4,11 +4,11 @@ name: release-please
 "on":
   workflow_call:
     secrets:
-      token: {required: true}
-      supermarket_user: {required: true}
-      supermarket_key: {required: true}
-      slack_bot_token: {required: true}
-      slack_channel_id: {required: true}
+      token: { required: true }
+      supermarket_user: { required: true }
+      supermarket_key: { required: true }
+      slack_bot_token: { required: true }
+      slack_channel_id: { required: true }
 
 jobs:
   release-please:
@@ -80,6 +80,7 @@ jobs:
 
   notify-slack:
     needs: [release-please, publish-to-supermarket]
+    if: ${{ always() && needs.release-please.outputs.release_created && needs.publish-to-supermarket.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Post text to a Slack channel
@@ -88,11 +89,12 @@ jobs:
         with:
           method: chat.postMessage
           token: ${{ secrets.slack_bot_token }}
+          errors: true
           payload: |
             channel: ${{ secrets.slack_channel_id }}
             text: "New release of ${{ github.event.repository.name }} cookbook: ${{ needs.release-please.outputs.tag_name }}"
             attachments:
-              - color: "28a745"
+              - color: "#28a745"
                 fields:
                   - title: "Status"
                     short: true
@@ -103,6 +105,7 @@ jobs:
         with:
           method: chat.postMessage
           token: ${{ secrets.slack_bot_token }}
+          errors: true
           payload: |
             channel: ${{ secrets.slack_channel_id }}
             thread_ts: "${{ steps.notify-slack.outputs.ts }}"
