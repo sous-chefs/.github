@@ -1,0 +1,48 @@
+---
+name: Install Cinc Workstation
+author: Sous Chefs
+description: >
+  Installs Cinc Workstation (open-source Chef Workstation distribution) on the
+  GitHub Actions runner. Replaces actionshub/chef-install to avoid omnitruck.chef.io
+  checksum mismatch failures. Cinc includes `chef` command wrappers for full compatibility.
+
+inputs:
+  version:
+    description: >
+      Cinc Workstation version to install. Use major version (e.g. '24') for latest
+      in that series, or 'latest' for the newest stable release.
+    required: false
+    default: '24'
+  channel:
+    description: 'Release channel: stable or current'
+    required: false
+    default: 'stable'
+
+runs:
+  using: composite
+  steps:
+    - name: Install Cinc Workstation (Linux/macOS)
+      if: runner.os != 'Windows'
+      shell: bash
+      run: |
+        set -euo pipefail
+        echo "::group::Installing Cinc Workstation v${{ inputs.version }}"
+        curl -fsSL https://omnitruck.cinc.sh/install.sh \
+          | sudo bash -s -- -P cinc-workstation -c ${{ inputs.channel }} -v ${{ inputs.version }}
+        echo "::endgroup::"
+
+        # Verify installation
+        cinc --version || chef --version
+
+    - name: Install Cinc Workstation (Windows)
+      if: runner.os == 'Windows'
+      shell: pwsh
+      run: |
+        Write-Host "::group::Installing Cinc Workstation v${{ inputs.version }}"
+        . { iwr -useb https://omnitruck.cinc.sh/install.ps1 } | iex
+        install -project cinc-workstation -channel ${{ inputs.channel }} -version ${{ inputs.version }}
+        Write-Host "::endgroup::"
+
+branding:
+  icon: download
+  color: orange
