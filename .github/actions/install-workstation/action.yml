@@ -43,6 +43,23 @@ runs:
         install -project cinc-workstation -channel ${{ inputs.channel }} -version ${{ inputs.version }}
         Write-Host "::endgroup::"
 
+        # The MSI updates the registry PATH but not the current session.
+        # Refresh it so we can verify immediately, then persist to GITHUB_PATH
+        # so subsequent steps can find chef/cinc without their own refresh.
+        $machinePath = [System.Environment]::GetEnvironmentVariable('Path', 'Machine')
+        $userPath    = [System.Environment]::GetEnvironmentVariable('Path', 'User')
+        $env:PATH    = "$machinePath;$userPath"
+
+        # Persist the Cinc bin dir for all later steps
+        $cincBin = (Get-Command cinc -ErrorAction SilentlyContinue)?.Source |
+                   Split-Path -Parent
+        if ($cincBin) {
+          "$cincBin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        }
+
+        # Verify installation in the same session where PATH is already refreshed
+        cinc --version
+
 branding:
   icon: download
   color: orange
