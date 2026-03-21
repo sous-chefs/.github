@@ -108,6 +108,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Check Metadata
-        uses: damacus/check-chef-metadata-action@v2
+        uses: damacus/check-chef-metadata-action@v3
         with:
           github-token: ${{ secrets.token || secrets.GITHUB_TOKEN }}
