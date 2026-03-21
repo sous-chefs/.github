@@ -25,3 +25,16 @@ jobs:
       - name: Verify chef command is available
         shell: bash
         run: chef --version
+
+  final:
+    runs-on: ubuntu-latest
+    name: final
+    needs: [test]
+    if: always()
+    steps:
+      - name: Check matrix result
+        run: |
+          if [[ "${{ needs.test.result }}" != "success" ]]; then
+            echo "One or more matrix jobs failed: ${{ needs.test.result }}"
+            exit 1
+          fi
