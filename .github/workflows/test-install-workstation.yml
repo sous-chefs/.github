@@ -3,11 +3,26 @@ name: Test install-workstation action
 
 "on":
   pull_request:
-    paths:
-      - .github/actions/install-workstation/**
 
 jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      install-workstation: ${{ steps.filter.outputs.install-workstation }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+      - name: Detect changed paths
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            install-workstation:
+              - '.github/actions/install-workstation/**'
+
   test:
+    needs: [detect-changes]
+    if: needs.detect-changes.outputs.install-workstation == 'true'
     strategy:
       fail-fast: false
       matrix:
@@ -26,15 +41,57 @@ jobs:
         shell: bash
         run: chef --version
 
+  check-markdown:
+    runs-on: ubuntu-latest
+    name: runner / markdownlint
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+      - name: Run Markdown Lint
+        uses: DavidAnson/markdownlint-cli2-action@v22
+        with:
+          globs: "**/*.md"
+
+  check-yaml:
+    runs-on: ubuntu-latest
+    name: runner / yamllint
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+      - name: Run yaml Lint
+        uses: actionshub/yamllint@main
+
+  check-workflows:
+    runs-on: ubuntu-latest
+    name: runner / actionlint
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+      - name: Run actionlint
+        uses: raven-actions/actionlint@v2
+
   final:
     runs-on: ubuntu-latest
     name: final
-    needs: [test]
+    needs: [test, check-markdown, check-yaml, check-workflows]
     if: always()
     steps:
-      - name: Check matrix result
+      - name: Check results
         run: |
-          if [[ "${{ needs.test.result }}" != "success" ]]; then
-            echo "One or more matrix jobs failed: ${{ needs.test.result }}"
-            exit 1
-          fi
+          declare -A results=(
+            [test]="${{ needs.test.result }}"
+            [check-markdown]="${{ needs.check-markdown.result }}"
+            [check-yaml]="${{ needs.check-yaml.result }}"
+            [check-workflows]="${{ needs.check-workflows.result }}"
+          )
+          failed=0
+          for job in "${!results[@]}"; do
+            result="${results[$job]}"
+            if [[ "$result" == "failure" || "$result" == "cancelled" ]]; then
+              echo "::error::$job: $result"
+              failed=1
+            else
+              echo "$job: $result"
+            fi
+          done
+          exit $failed

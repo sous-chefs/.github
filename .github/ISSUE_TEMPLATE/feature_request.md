@@ -6,10 +6,6 @@ labels: Feature Request
 assignees: ''
 
 ---
-### :speaking_head: Foreword
-
-Thank for taking the time to fill this feature request fully. Without it we may not be able to , and the issue may be closed without resolution.
-
 ## :frowning_person: Problem Statement
 
 A clear and concise description of what the problem is. E.g. I'm always frustrated when [...]
