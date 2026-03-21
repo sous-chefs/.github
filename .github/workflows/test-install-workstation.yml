@@ -1,0 +1,27 @@
+---
+name: Test install-workstation action
+
+"on":
+  pull_request:
+    paths:
+      - .github/actions/install-workstation/**
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        version: ["24", "latest"]
+    runs-on: ${{ matrix.os }}
+    name: runner / install-workstation ${{ matrix.os }} v${{ matrix.version }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+      - name: Install Cinc Workstation
+        uses: ./.github/actions/install-workstation
+        with:
+          version: ${{ matrix.version }}
+      - name: Verify chef command is available
+        shell: bash
+        run: chef --version

@@ -43,6 +43,11 @@ runs:
         install -project cinc-workstation -channel ${{ inputs.channel }} -version ${{ inputs.version }}
         Write-Host "::endgroup::"
 
+    - name: Verify installation (Windows)
+      if: runner.os == 'Windows'
+      shell: pwsh
+      run: chef --version
+
 branding:
   icon: download
   color: orange

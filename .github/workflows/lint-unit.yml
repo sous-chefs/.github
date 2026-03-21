@@ -96,6 +96,15 @@ jobs:
           reporter: ${{ inputs.link-reporter }}
           fail_on_error: ${{ inputs.fail_on_link_errors }}
 
+  check-workflows:
+    runs-on: ubuntu-latest
+    name: runner / actionlint
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+      - name: Run actionlint
+        uses: raven-actions/actionlint@v2
+
   check-metadata:
     if: github.event_name == 'pull_request'
     name: runner / Check Metadata
