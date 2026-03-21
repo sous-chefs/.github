@@ -1,0 +1,102 @@
+---
+name: Update Profile README
+
+"on":
+  schedule:
+    - cron: "0 6 * * 1" # Every Monday at 06:00 UTC
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fetch recently updated cookbooks
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api "orgs/sous-chefs/repos?sort=updated&direction=desc&per_page=30&type=public" \
+            --jq '
+              [
+                .[]
+                | select(
+                    .name != ".github"
+                    and .archived == false
+                    and .fork == false
+                  )
+              ]
+              | .[0:10]
+              | .[]
+              | "| [\(.name)](\(.html_url)) | \(.description // "A Chef cookbook") | \(.updated_at | split("T")[0]) |"
+            ' > /tmp/cookbooks.txt
+          echo "Fetched $(wc -l < /tmp/cookbooks.txt) cookbooks"
+
+      - name: Fetch org members
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api "orgs/sous-chefs/members?per_page=60" \
+            --jq '
+              .[]
+              | "<a href=\"\(.html_url)\"><img src=\"\(.avatar_url)&s=64\" width=\"48\" height=\"48\" alt=\"\(.login)\" title=\"\(.login)\" /></a>"
+            ' > /tmp/members.txt
+          echo "Fetched $(wc -l < /tmp/members.txt) members"
+
+      - name: Update README
+        run: |
+          python3 - <<'PYEOF'
+          import re
+
+          with open("profile/README.md", "r") as f:
+              content = f.read()
+
+          # --- Cookbooks section ---
+          with open("/tmp/cookbooks.txt") as f:
+              rows = f.read().strip()
+
+          if rows:
+              cookbook_table = (
+                  "| Cookbook | Description | Last Updated |\n"
+                  "| --- | --- | --- |\n"
+                  + rows
+              )
+              content = re.sub(
+                  r"<!-- COOKBOOKS_START -->.*?<!-- COOKBOOKS_END -->",
+                  f"<!-- COOKBOOKS_START -->\n{cookbook_table}\n<!-- COOKBOOKS_END -->",
+                  content,
+                  flags=re.DOTALL,
+              )
+
+          # --- Contributors section ---
+          with open("/tmp/members.txt") as f:
+              avatars = f.read().strip()
+
+          if avatars:
+              content = re.sub(
+                  r"<!-- CONTRIBUTORS_START -->.*?<!-- CONTRIBUTORS_END -->",
+                  f"<!-- CONTRIBUTORS_START -->\n{avatars}\n<!-- CONTRIBUTORS_END -->",
+                  content,
+                  flags=re.DOTALL,
+              )
+
+          with open("profile/README.md", "w") as f:
+              f.write(content)
+
+          print("README updated successfully")
+          PYEOF
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/README.md
+          git diff --staged --quiet \
+            || git commit -m "chore: update profile README with latest cookbooks and members"
+          git push
