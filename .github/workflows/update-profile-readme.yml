@@ -51,46 +51,26 @@ jobs:
 
       - name: Update README
         run: |
-          python3 - <<'PYEOF'
-          import re
+          ruby - <<'RUBYEOF'
+          readme = "profile/README.md"
+          content = File.read(readme)
 
-          with open("profile/README.md", "r") as f:
-              content = f.read()
+          rows = File.read("/tmp/cookbooks.txt").strip
+          unless rows.empty?
+            table = "| Cookbook | Description | Last Updated |\n| --- | --- | --- |\n#{rows}"
+            content.gsub!(/<!-- COOKBOOKS_START -->.*?<!-- COOKBOOKS_END -->/m,
+                          "<!-- COOKBOOKS_START -->\n#{table}\n<!-- COOKBOOKS_END -->")
+          end
 
-          # --- Cookbooks section ---
-          with open("/tmp/cookbooks.txt") as f:
-              rows = f.read().strip()
+          avatars = File.read("/tmp/members.txt").strip
+          unless avatars.empty?
+            content.gsub!(/<!-- CONTRIBUTORS_START -->.*?<!-- CONTRIBUTORS_END -->/m,
+                          "<!-- CONTRIBUTORS_START -->\n#{avatars}\n<!-- CONTRIBUTORS_END -->")
+          end
 
-          if rows:
-              cookbook_table = (
-                  "| Cookbook | Description | Last Updated |\n"
-                  "| --- | --- | --- |\n"
-                  + rows
-              )
-              content = re.sub(
-                  r"<!-- COOKBOOKS_START -->.*?<!-- COOKBOOKS_END -->",
-                  f"<!-- COOKBOOKS_START -->\n{cookbook_table}\n<!-- COOKBOOKS_END -->",
-                  content,
-                  flags=re.DOTALL,
-              )
-
-          # --- Contributors section ---
-          with open("/tmp/members.txt") as f:
-              avatars = f.read().strip()
-
-          if avatars:
-              content = re.sub(
-                  r"<!-- CONTRIBUTORS_START -->.*?<!-- CONTRIBUTORS_END -->",
-                  f"<!-- CONTRIBUTORS_START -->\n{avatars}\n<!-- CONTRIBUTORS_END -->",
-                  content,
-                  flags=re.DOTALL,
-              )
-
-          with open("profile/README.md", "w") as f:
-              f.write(content)
-
-          print("README updated successfully")
-          PYEOF
+          File.write(readme, content)
+          puts "README updated successfully"
+          RUBYEOF
 
       - name: Commit and push changes
         run: |
