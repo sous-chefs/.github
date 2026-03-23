@@ -35,11 +35,13 @@ jobs:
       - name: Prepare Gemfile
         run: |
           if [ ! -f Gemfile ]; then
-            echo "source 'https://rubygems.org'" > Gemfile
-            echo "gem 'chefspec', '>= 9.3.7'" >> Gemfile
-            echo "gem 'berkshelf'" >> Gemfile
-            echo "gem 'fauxhai-chef'" >> Gemfile
-            echo "gem 'rspec-its'" >> Gemfile
+            {
+              echo "source 'https://rubygems.org'"
+              echo "gem 'chefspec', '>= 9.3.7'"
+              echo "gem 'berkshelf'"
+              echo "gem 'fauxhai-chef'"
+              echo "gem 'rspec-its'"
+            } > Gemfile
             if [ -f metadata.rb ]; then
               grep "^gem " metadata.rb >> Gemfile || true
             fi
@@ -75,8 +77,10 @@ jobs:
       - name: Prepare Gemfile
         run: |
           if [ ! -f Gemfile ]; then
-            echo "source 'https://rubygems.org'" > Gemfile
-            echo "gem 'cookstyle'" >> Gemfile
+            {
+              echo "source 'https://rubygems.org'"
+              echo "gem 'cookstyle'"
+            } > Gemfile
           fi
         shell: bash
       - name: Setup Ruby
