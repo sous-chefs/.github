@@ -36,22 +36,32 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v6
+      - name: Prepare Gemfile
+        run: |
+          if [ ! -f Gemfile ]; then
+            echo "source 'https://rubygems.org'" > Gemfile
+            echo "gem 'chefspec'" >> Gemfile
+            echo "gem 'berkshelf'" >> Gemfile
+            echo "gem 'fauxhai-chef'" >> Gemfile
+            echo "gem 'rspec-its'" >> Gemfile
+            if [ -f metadata.rb ]; then
+              grep "^gem " metadata.rb >> Gemfile || true
+            fi
+            if [ -n "${{ inputs.gems }}" ]; then
+              for g in ${{ inputs.gems }}; do
+                echo "gem '$g'" >> Gemfile
+              done
+            fi
+          fi
+        shell: bash
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3"
+          ruby-version: "3.2"
           bundler-cache: true
-      - name: Install extra gems
-        run: gem install -N "${{ inputs.gems }}"
-        if: ${{ inputs.gems }}
       - name: Run RSpec
         run: |
-          if [ -f Gemfile ]; then
-            bundle exec rspec -f j -o tmp/rspec_results.json -f p
-          else
-            gem install -N chefspec
-            rspec -f j -o tmp/rspec_results.json -f p
-          fi
+          bundle exec rspec -f j -o tmp/rspec_results.json -f p
         shell: bash
       - name: RSpec Report
         uses: SonicGarden/rspec-report-action@v6
@@ -66,19 +76,21 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v6
+      - name: Prepare Gemfile
+        run: |
+          if [ ! -f Gemfile ]; then
+            echo "source 'https://rubygems.org'" > Gemfile
+            echo "gem 'cookstyle'" >> Gemfile
+          fi
+        shell: bash
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3"
+          ruby-version: "3.2"
           bundler-cache: true
       - name: Run Cookstyle
         run: |
-          if [ -f Gemfile ]; then
-            bundle exec cookstyle --display-cop-names --extra-details
-          else
-            gem install -N cookstyle
-            cookstyle --display-cop-names --extra-details
-          fi
+          bundle exec cookstyle --display-cop-names --extra-details
         shell: bash
 
   check-yaml:
