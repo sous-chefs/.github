@@ -15,10 +15,6 @@ name: Lint & Unit test
         required: false
         type: string
         default: "ubuntu-latest"
-      chef_workstation_version:
-        required: false
-        type: string
-        default: "latest"
       fail_on_link_errors:
         required: false
         type: boolean
@@ -40,7 +36,7 @@ jobs:
         run: |
           if [ ! -f Gemfile ]; then
             echo "source 'https://rubygems.org'" > Gemfile
-            echo "gem 'chefspec'" >> Gemfile
+            echo "gem 'chefspec', '>= 9.3.7'" >> Gemfile
             echo "gem 'berkshelf'" >> Gemfile
             echo "gem 'fauxhai-chef'" >> Gemfile
             echo "gem 'rspec-its'" >> Gemfile
@@ -57,7 +53,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.2"
+          ruby-version: "3.3"
           bundler-cache: true
       - name: Run RSpec
         run: |
@@ -86,7 +82,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.2"
+          ruby-version: "3.3"
           bundler-cache: true
       - name: Run Cookstyle
         run: |
