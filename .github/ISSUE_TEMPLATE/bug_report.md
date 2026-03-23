@@ -6,11 +6,7 @@ labels: Bug, Needs Triage
 assignees: ''
 ---
 
-### :speaking_head: Foreword
-
-Thank for taking the time to fill this bug report fully. Without it we may not be able to fix the bug, and the issue may be closed without resolution.
-
-## :ghost: Brief Description
+## Brief Description
 
 A clear and concise description of what the bug is.
 
@@ -18,11 +14,11 @@ A clear and concise description of what the bug is.
 
 Version of the cookbook where you are encountering the issue.
 
-## :woman_cook:  Chef-Infra Version
+## Chef-Infra Version
 
 Version of chef-client in your environment.
 
-## :tophat: Platform details
+## Platform details
 
 Operating system distribution and release version. Cloud provider if running in the cloud.
 
