@@ -13,7 +13,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v6
       - name: Detect changed paths
-        uses: dorny/paths-filter@v3
+        uses: dorny/paths-filter@v4
         id: filter
         with:
           filters: |
