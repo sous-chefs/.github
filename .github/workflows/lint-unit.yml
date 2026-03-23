@@ -36,15 +36,23 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v6
-      - name: Install Workstation
-        uses: sous-chefs/.github/.github/actions/install-workstation@feat/cinc-workstation-install
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          version: ${{ inputs.chef_workstation_version }}
-      - name: Install Gems
-        run: chef gem install -N "${{ inputs.gems }}"
+          ruby-version: "3.3"
+          bundler-cache: true
+      - name: Install extra gems
+        run: gem install -N "${{ inputs.gems }}"
         if: ${{ inputs.gems }}
       - name: Run RSpec
-        run: chef exec rspec -f j -o tmp/rspec_results.json -f p
+        run: |
+          if [ -f Gemfile ]; then
+            bundle exec rspec -f j -o tmp/rspec_results.json -f p
+          else
+            gem install -N chefspec
+            rspec -f j -o tmp/rspec_results.json -f p
+          fi
+        shell: bash
       - name: RSpec Report
         uses: SonicGarden/rspec-report-action@v6
         with:
@@ -58,12 +66,20 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v6
-      - name: Install Workstation
-        uses: sous-chefs/.github/.github/actions/install-workstation@feat/cinc-workstation-install
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          version: ${{ inputs.chef_workstation_version }}
+          ruby-version: "3.3"
+          bundler-cache: true
       - name: Run Cookstyle
-        run: chef exec cookstyle --display-cop-names --extra-details
+        run: |
+          if [ -f Gemfile ]; then
+            bundle exec cookstyle --display-cop-names --extra-details
+          else
+            gem install -N cookstyle
+            cookstyle --display-cop-names --extra-details
+          fi
+        shell: bash
 
   check-yaml:
     runs-on: ubuntu-latest
