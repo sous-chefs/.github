@@ -72,7 +72,6 @@ jobs:
           rows = repos.map do |repo|
             name = repo["name"]
             url = repo["html_url"]
-            desc = repo["description"] || "A Chef cookbook"
             updated = Time.parse(repo["updated_at"]).strftime("%b %d, %Y")
 
             pr_path = "/tmp/prs/#{name}.json"
@@ -89,11 +88,11 @@ jobs:
               "—"
             end
 
-            "| [#{name}](#{url}) | #{desc} | #{change} | #{updated} |"
+            "| [#{name}](#{url}) | #{change} | #{updated} |"
           end
 
           unless rows.empty?
-            table = "| Cookbook | Description | Latest Change | Last Updated |\n| --- | --- | --- | --- |\n#{rows.join("\n")}"
+            table = "| Cookbook | Latest Change | Last Updated |\n| --- | --- | --- |\n#{rows.join("\n")}"
             content.gsub!(/<!-- COOKBOOKS_START -->.*?<!-- COOKBOOKS_END -->/m,
                           "<!-- COOKBOOKS_START -->\n#{table}\n<!-- COOKBOOKS_END -->")
           end
