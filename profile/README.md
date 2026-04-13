@@ -29,7 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Description | Last Updated |
 | --- | --- | --- |
-| [sous-chefs](https://github.com/sous-chefs) | Check back soon — this updates weekly! | — |
+| [certificate](https://github.com/sous-chefs/certificate) | Development repository for the certificate cookbook | 2026-04-13 |
+| [xinetd](https://github.com/sous-chefs/xinetd) | Development repository for the xinetd cookbook | 2026-04-12 |
+| [nginx](https://github.com/sous-chefs/nginx) | Development repository for the nginx cookbook | 2026-04-12 |
+| [postgresql](https://github.com/sous-chefs/postgresql) | Development repository for the postgresql cookbook | 2026-04-11 |
+| [chrony](https://github.com/sous-chefs/chrony) | Development repository for the chrony cookbook | 2026-04-10 |
+| [elasticsearch](https://github.com/sous-chefs/elasticsearch) | Development repository for the elasticsearch cookbook | 2026-04-10 |
+| [selinux](https://github.com/sous-chefs/selinux) | Development repository for the selinux cookbook | 2026-04-10 |
+| [aws](https://github.com/sous-chefs/aws) | Development repository for the aws cookbook | 2026-04-09 |
+| [percona](https://github.com/sous-chefs/percona) | Development repository for the percona cookbook | 2026-04-08 |
+| [hashicorp-vault](https://github.com/sous-chefs/hashicorp-vault) | Development repository for the hashicorp-vault cookbook | 2026-04-07 |
 <!-- COOKBOOKS_END -->
 
 ---
@@ -37,7 +46,8 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 ## 👨‍🍳 Our Community
 
 <!-- CONTRIBUTORS_START -->
-[![Org Members](https://github.com/sous-chefs.png)](https://github.com/orgs/sous-chefs/people)
+<a href="https://github.com/damacus"><img src="https://avatars.githubusercontent.com/u/40786?v=4&s=64" width="48" height="48" alt="damacus" title="damacus" /></a>
+<a href="https://github.com/MarkGibbons"><img src="https://avatars.githubusercontent.com/u/3452840?v=4&s=64" width="48" height="48" alt="MarkGibbons" title="MarkGibbons" /></a>
 <!-- CONTRIBUTORS_END -->
 
 ---
