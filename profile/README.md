@@ -27,18 +27,9 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 ## 🍽️ Recently Updated Cookbooks
 
 <!-- COOKBOOKS_START -->
-| Cookbook | Description | Last Updated |
-| --- | --- | --- |
-| [certificate](https://github.com/sous-chefs/certificate) | Development repository for the certificate cookbook | 2026-04-13 |
-| [xinetd](https://github.com/sous-chefs/xinetd) | Development repository for the xinetd cookbook | 2026-04-12 |
-| [nginx](https://github.com/sous-chefs/nginx) | Development repository for the nginx cookbook | 2026-04-12 |
-| [postgresql](https://github.com/sous-chefs/postgresql) | Development repository for the postgresql cookbook | 2026-04-11 |
-| [chrony](https://github.com/sous-chefs/chrony) | Development repository for the chrony cookbook | 2026-04-10 |
-| [elasticsearch](https://github.com/sous-chefs/elasticsearch) | Development repository for the elasticsearch cookbook | 2026-04-10 |
-| [selinux](https://github.com/sous-chefs/selinux) | Development repository for the selinux cookbook | 2026-04-10 |
-| [aws](https://github.com/sous-chefs/aws) | Development repository for the aws cookbook | 2026-04-09 |
-| [percona](https://github.com/sous-chefs/percona) | Development repository for the percona cookbook | 2026-04-08 |
-| [hashicorp-vault](https://github.com/sous-chefs/hashicorp-vault) | Development repository for the hashicorp-vault cookbook | 2026-04-07 |
+| Cookbook                                    | Description                            | Latest Change | Last Updated |
+|---------------------------------------------|----------------------------------------|---------------|--------------|
+| [sous-chefs](https://github.com/sous-chefs) | Check back soon — this updates weekly! | —             | —            |
 <!-- COOKBOOKS_END -->
 
 ---

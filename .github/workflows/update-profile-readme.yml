@@ -33,10 +33,19 @@ jobs:
                   )
               ]
               | .[0:10]
-              | .[]
-              | "| [\(.name)](\(.html_url)) | \(.description // "A Chef cookbook") | \(.updated_at | split("T")[0]) |"
-            ' > /tmp/cookbooks.txt
-          echo "Fetched $(wc -l < /tmp/cookbooks.txt) cookbooks"
+            ' > /tmp/repos.json
+          echo "Fetched $(jq 'length' /tmp/repos.json) cookbooks"
+
+      - name: Fetch latest merged PRs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p /tmp/prs
+          for repo in $(jq -r '.[].name' /tmp/repos.json); do
+            gh api "repos/sous-chefs/${repo}/pulls?state=closed&sort=updated&direction=desc&per_page=5" \
+              --jq '[.[] | select(.merged_at != null)][0]' \
+              > "/tmp/prs/${repo}.json" 2>/dev/null || echo 'null' > "/tmp/prs/${repo}.json"
+          done
 
       - name: Fetch org members
         env:
@@ -52,12 +61,39 @@ jobs:
       - name: Update README
         run: |
           ruby - <<'RUBYEOF'
+          require "json"
+          require "time"
+
           readme = "profile/README.md"
           content = File.read(readme)
 
-          rows = File.read("/tmp/cookbooks.txt").strip
+          repos = JSON.parse(File.read("/tmp/repos.json"))
+
+          rows = repos.map do |repo|
+            name = repo["name"]
+            url = repo["html_url"]
+            desc = repo["description"] || "A Chef cookbook"
+            updated = Time.parse(repo["updated_at"]).strftime("%b %d, %Y")
+
+            pr_path = "/tmp/prs/#{name}.json"
+            pr = begin
+              data = JSON.parse(File.read(pr_path))
+              data unless data.nil? || data.is_a?(String)
+            rescue JSON::ParserError, Errno::ENOENT
+              nil
+            end
+
+            change = if pr
+              "[#{pr['title']}](#{pr['html_url']})"
+            else
+              "—"
+            end
+
+            "| [#{name}](#{url}) | #{desc} | #{change} | #{updated} |"
+          end
+
           unless rows.empty?
-            table = "| Cookbook | Description | Last Updated |\n| --- | --- | --- |\n#{rows}"
+            table = "| Cookbook | Description | Latest Change | Last Updated |\n| --- | --- | --- | --- |\n#{rows.join("\n")}"
             content.gsub!(/<!-- COOKBOOKS_START -->.*?<!-- COOKBOOKS_END -->/m,
                           "<!-- COOKBOOKS_START -->\n#{table}\n<!-- COOKBOOKS_END -->")
           end
