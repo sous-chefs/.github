@@ -27,9 +27,18 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 ## 🍽️ Recently Updated Cookbooks
 
 <!-- COOKBOOKS_START -->
-| Cookbook                                    | Description                            | Latest Change | Last Updated |
-|---------------------------------------------|----------------------------------------|---------------|--------------|
-| [sous-chefs](https://github.com/sous-chefs) | Check back soon — this updates weekly! | —             | —            |
+| Cookbook | Description | Latest Change | Last Updated |
+| --- | --- | --- | --- |
+| [certificate](https://github.com/sous-chefs/certificate) | Development repository for the certificate cookbook | [chore(main): release certificate 3.0.0](https://github.com/sous-chefs/certificate/pull/120) | Apr 13, 2026 |
+| [xinetd](https://github.com/sous-chefs/xinetd) | Development repository for the xinetd cookbook | [chore(deps): update actions/checkout action to v6](https://github.com/sous-chefs/xinetd/pull/30) | Apr 12, 2026 |
+| [nginx](https://github.com/sous-chefs/nginx) | Development repository for the nginx cookbook | [chore(deps): update actions to v6 (major)](https://github.com/sous-chefs/nginx/pull/660) | Apr 12, 2026 |
+| [postgresql](https://github.com/sous-chefs/postgresql) | Development repository for the postgresql cookbook | [chore(main): release 13.0.4](https://github.com/sous-chefs/postgresql/pull/824) | Apr 11, 2026 |
+| [chrony](https://github.com/sous-chefs/chrony) | Development repository for the chrony cookbook | [chore(ci): Add new platforms in CI](https://github.com/sous-chefs/chrony/pull/77) | Apr 10, 2026 |
+| [elasticsearch](https://github.com/sous-chefs/elasticsearch) | Development repository for the elasticsearch cookbook | [chore(main): release 6.0.1](https://github.com/sous-chefs/elasticsearch/pull/837) | Apr 10, 2026 |
+| [selinux](https://github.com/sous-chefs/selinux) | Development repository for the selinux cookbook | [chore(deps): update actions to v6 (major)](https://github.com/sous-chefs/selinux/pull/142) | Apr 10, 2026 |
+| [aws](https://github.com/sous-chefs/aws) | Development repository for the aws cookbook | [chore(ci): Update release workflow](https://github.com/sous-chefs/aws/pull/525) | Apr 09, 2026 |
+| [percona](https://github.com/sous-chefs/percona) | Development repository for the percona cookbook | [chore(deps): update actions to v6 (major)](https://github.com/sous-chefs/percona/pull/509) | Apr 08, 2026 |
+| [hashicorp-vault](https://github.com/sous-chefs/hashicorp-vault) | Development repository for the hashicorp-vault cookbook | [chore(deps): update actions to v6 (major)](https://github.com/sous-chefs/hashicorp-vault/pull/274) | Apr 07, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
