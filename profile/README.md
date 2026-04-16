@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [certificate](https://github.com/sous-chefs/certificate) | [chore(main): release certificate 3.0.0](https://github.com/sous-chefs/certificate/pull/120) | Apr 13, 2026 |
-| [xinetd](https://github.com/sous-chefs/xinetd) | [chore(deps): update actions/checkout action to v6](https://github.com/sous-chefs/xinetd/pull/30) | Apr 12, 2026 |
-| [nginx](https://github.com/sous-chefs/nginx) | [chore(deps): update actions to v6 (major)](https://github.com/sous-chefs/nginx/pull/660) | Apr 12, 2026 |
-| [postgresql](https://github.com/sous-chefs/postgresql) | [chore(main): release 13.0.4](https://github.com/sous-chefs/postgresql/pull/824) | Apr 11, 2026 |
-| [chrony](https://github.com/sous-chefs/chrony) | [chore(ci): Add new platforms in CI](https://github.com/sous-chefs/chrony/pull/77) | Apr 10, 2026 |
-| [elasticsearch](https://github.com/sous-chefs/elasticsearch) | [chore(main): release 6.0.1](https://github.com/sous-chefs/elasticsearch/pull/837) | Apr 10, 2026 |
-| [selinux](https://github.com/sous-chefs/selinux) | [chore(deps): update actions to v6 (major)](https://github.com/sous-chefs/selinux/pull/142) | Apr 10, 2026 |
-| [aws](https://github.com/sous-chefs/aws) | [chore(ci): Update release workflow](https://github.com/sous-chefs/aws/pull/525) | Apr 09, 2026 |
-| [percona](https://github.com/sous-chefs/percona) | [chore(deps): update actions to v6 (major)](https://github.com/sous-chefs/percona/pull/509) | Apr 08, 2026 |
-| [hashicorp-vault](https://github.com/sous-chefs/hashicorp-vault) | [chore(deps): update actions to v6 (major)](https://github.com/sous-chefs/hashicorp-vault/pull/274) | Apr 07, 2026 |
+| [grafana](https://github.com/sous-chefs/grafana) | [chore(main): release grafana 10.9.0](https://github.com/sous-chefs/grafana/pull/486) | Apr 15, 2026 |
+| [aws](https://github.com/sous-chefs/aws) | [fix(deps): update aws-sdk-core to ~> 3.126.2 to support imdsv2](https://github.com/sous-chefs/aws/pull/517) | Apr 15, 2026 |
+| [isc_kea](https://github.com/sous-chefs/isc_kea) | [chore(deps): update actions/checkout action to v6](https://github.com/sous-chefs/isc_kea/pull/52) | Apr 15, 2026 |
+| [samba](https://github.com/sous-chefs/samba) | [chore(main): release 2.0.15](https://github.com/sous-chefs/samba/pull/160) | Apr 15, 2026 |
+| [rvm](https://github.com/sous-chefs/rvm) | [chore(deps): update actionshub/chef-install action to v6](https://github.com/sous-chefs/rvm/pull/463) | Apr 14, 2026 |
+| [apache2](https://github.com/sous-chefs/apache2) | [chore(main): release 9.3.11](https://github.com/sous-chefs/apache2/pull/864) | Apr 14, 2026 |
+| [nginx](https://github.com/sous-chefs/nginx) | [chore(deps): update actions to v6 (major)](https://github.com/sous-chefs/nginx/pull/660) | Apr 14, 2026 |
+| [ufw](https://github.com/sous-chefs/ufw) | [feat!: migrate ufw to custom resources](https://github.com/sous-chefs/ufw/pull/95) | Apr 14, 2026 |
+| [php](https://github.com/sous-chefs/php) | [chore(deps): update actions to v6 (major)](https://github.com/sous-chefs/php/pull/384) | Apr 14, 2026 |
+| [resolver](https://github.com/sous-chefs/resolver) | [chore(main): release 4.3.0](https://github.com/sous-chefs/resolver/pull/90) | Apr 14, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
