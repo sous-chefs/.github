@@ -2,6 +2,13 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base"],
   "packageRules": [{
+      "description": "Chef Workstation 25 bundles Ruby 3.2, so keep setup-ruby pinned to that line",
+      "matchManagers": ["github-actions"],
+      "matchDepTypes": ["uses-with"],
+      "matchPackageNames": ["ruby"],
+      "enabled": false
+    },
+    {
       "groupName": "Actions",
       "matchUpdateTypes": ["patch", "pin", "digest"],
       "automerge": true,
