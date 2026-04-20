@@ -46,8 +46,8 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 ## 👨‍🍳 Our Community
 
 <!-- CONTRIBUTORS_START -->
-<a href="https://github.com/damacus"><img src="https://avatars.githubusercontent.com/u/40786?v=4&s=64" width="48" height="48" alt="damacus" title="damacus" /></a>
-<a href="https://github.com/MarkGibbons"><img src="https://avatars.githubusercontent.com/u/3452840?v=4&s=64" width="48" height="48" alt="MarkGibbons" title="MarkGibbons" /></a>
+[![damacus](https://avatars.githubusercontent.com/u/40786?v=4&s=64)](https://github.com/damacus)
+[![MarkGibbons](https://avatars.githubusercontent.com/u/3452840?v=4&s=64)](https://github.com/MarkGibbons)
 <!-- CONTRIBUTORS_END -->
 
 ---
