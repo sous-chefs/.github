@@ -54,7 +54,7 @@ jobs:
           gh api "orgs/sous-chefs/members?per_page=60" \
             --jq '
               .[]
-              | "<a href=\"\(.html_url)\"><img src=\"\(.avatar_url)&s=64\" width=\"48\" height=\"48\" alt=\"\(.login)\" title=\"\(.login)\" /></a>"
+              | "[![\(.login)](\(.avatar_url)&s=64)](\(.html_url))"
             ' > /tmp/members.txt
           echo "Fetched $(wc -l < /tmp/members.txt) members"
 
