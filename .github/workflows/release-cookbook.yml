@@ -100,6 +100,23 @@ jobs:
                     short: true
                     value: "Completed"
 
+      - name: Convert release body to Slack mrkdwn
+        id: format-body
+        env:
+          BODY: ${{ needs.release-please.outputs.body }}
+        run: |
+          formatted=$(printf '%s' "$BODY" | sed -E \
+            -e 's/^#{1,6}[[:space:]]+(.+)$/*\1*/' \
+            -e 's/^#{1,6}[[:space:]]*$//' \
+            -e 's/\*\*([^*]+)\*\*/*\1*/g' \
+            -e 's/\[([^]]+)\]\(([^)]+)\)/<\2|\1>/g' \
+            -e 's/^([[:space:]]*)[*-][[:space:]]+/\1• /')
+          {
+            echo "body<<SLACK_EOF"
+            echo "$formatted"
+            echo "SLACK_EOF"
+          } >> "$GITHUB_OUTPUT"
+
       - name: Reply to release message with release details
         uses: slackapi/slack-github-action@v3.0.1
         with:
@@ -109,4 +126,8 @@ jobs:
           payload: |
             channel: ${{ secrets.slack_channel_id }}
             thread_ts: "${{ steps.notify-slack.outputs.ts }}"
-            text: "${{ needs.release-please.outputs.body }}"
+            blocks:
+              - type: section
+                text:
+                  type: mrkdwn
+                  text: ${{ toJSON(steps.format-body.outputs.body) }}
