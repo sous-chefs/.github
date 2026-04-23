@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [grafana](https://github.com/sous-chefs/grafana) | [chore(main): release grafana 10.9.0](https://github.com/sous-chefs/grafana/pull/486) | Apr 15, 2026 |
-| [aws](https://github.com/sous-chefs/aws) | [fix(deps): update aws-sdk-core to ~> 3.126.2 to support imdsv2](https://github.com/sous-chefs/aws/pull/517) | Apr 15, 2026 |
-| [isc_kea](https://github.com/sous-chefs/isc_kea) | [chore(deps): update actions/checkout action to v6](https://github.com/sous-chefs/isc_kea/pull/52) | Apr 15, 2026 |
-| [samba](https://github.com/sous-chefs/samba) | [chore(main): release 2.0.15](https://github.com/sous-chefs/samba/pull/160) | Apr 15, 2026 |
-| [rvm](https://github.com/sous-chefs/rvm) | [chore(deps): update actionshub/chef-install action to v6](https://github.com/sous-chefs/rvm/pull/463) | Apr 14, 2026 |
-| [apache2](https://github.com/sous-chefs/apache2) | [chore(main): release 9.3.11](https://github.com/sous-chefs/apache2/pull/864) | Apr 14, 2026 |
-| [nginx](https://github.com/sous-chefs/nginx) | [chore(deps): update actions to v6 (major)](https://github.com/sous-chefs/nginx/pull/660) | Apr 14, 2026 |
-| [ufw](https://github.com/sous-chefs/ufw) | [feat!: migrate ufw to custom resources](https://github.com/sous-chefs/ufw/pull/95) | Apr 14, 2026 |
-| [php](https://github.com/sous-chefs/php) | [chore(deps): update actions to v6 (major)](https://github.com/sous-chefs/php/pull/384) | Apr 14, 2026 |
-| [resolver](https://github.com/sous-chefs/resolver) | [chore(main): release 4.3.0](https://github.com/sous-chefs/resolver/pull/90) | Apr 14, 2026 |
+| [drbd](https://github.com/sous-chefs/drbd) | [chore(main): release 3.0.17](https://github.com/sous-chefs/drbd/pull/46) | Apr 22, 2026 |
+| [daemontools](https://github.com/sous-chefs/daemontools) | [chore(main): release 2.0.0](https://github.com/sous-chefs/daemontools/pull/46) | Apr 22, 2026 |
+| [elixir](https://github.com/sous-chefs/elixir) | [chore(main): release 4.0.0](https://github.com/sous-chefs/elixir/pull/54) | Apr 22, 2026 |
+| [docker-engine](https://github.com/sous-chefs/docker-engine) | [chore(main): release 1.0.0](https://github.com/sous-chefs/docker-engine/pull/41) | Apr 22, 2026 |
+| [aptly](https://github.com/sous-chefs/aptly) | [feat: support keyserver URIs in mirrors](https://github.com/sous-chefs/aptly/pull/156) | Apr 22, 2026 |
+| [dnsmasq](https://github.com/sous-chefs/dnsmasq) | [chore(main): release 2.0.0](https://github.com/sous-chefs/dnsmasq/pull/110) | Apr 22, 2026 |
+| [cpu](https://github.com/sous-chefs/cpu) | [chore(main): release 4.0.0](https://github.com/sous-chefs/cpu/pull/63) | Apr 22, 2026 |
+| [deb_pkg_unautostart](https://github.com/sous-chefs/deb_pkg_unautostart) | [chore(main): release 3.0.0](https://github.com/sous-chefs/deb_pkg_unautostart/pull/44) | Apr 22, 2026 |
+| [beyondcompare](https://github.com/sous-chefs/beyondcompare) | [chore(main): release beyondcompare 3.0.0](https://github.com/sous-chefs/beyondcompare/pull/47) | Apr 22, 2026 |
+| [dpkg_autostart](https://github.com/sous-chefs/dpkg_autostart) | [chore(main): release 1.0.0](https://github.com/sous-chefs/dpkg_autostart/pull/61) | Apr 21, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
