@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [drbd](https://github.com/sous-chefs/drbd) | [chore(main): release 3.0.17](https://github.com/sous-chefs/drbd/pull/46) | Apr 22, 2026 |
-| [daemontools](https://github.com/sous-chefs/daemontools) | [chore(main): release 2.0.0](https://github.com/sous-chefs/daemontools/pull/46) | Apr 22, 2026 |
-| [elixir](https://github.com/sous-chefs/elixir) | [chore(main): release 4.0.0](https://github.com/sous-chefs/elixir/pull/54) | Apr 22, 2026 |
-| [docker-engine](https://github.com/sous-chefs/docker-engine) | [chore(main): release 1.0.0](https://github.com/sous-chefs/docker-engine/pull/41) | Apr 22, 2026 |
-| [aptly](https://github.com/sous-chefs/aptly) | [feat: support keyserver URIs in mirrors](https://github.com/sous-chefs/aptly/pull/156) | Apr 22, 2026 |
-| [dnsmasq](https://github.com/sous-chefs/dnsmasq) | [chore(main): release 2.0.0](https://github.com/sous-chefs/dnsmasq/pull/110) | Apr 22, 2026 |
-| [cpu](https://github.com/sous-chefs/cpu) | [chore(main): release 4.0.0](https://github.com/sous-chefs/cpu/pull/63) | Apr 22, 2026 |
-| [deb_pkg_unautostart](https://github.com/sous-chefs/deb_pkg_unautostart) | [chore(main): release 3.0.0](https://github.com/sous-chefs/deb_pkg_unautostart/pull/44) | Apr 22, 2026 |
-| [beyondcompare](https://github.com/sous-chefs/beyondcompare) | [chore(main): release beyondcompare 3.0.0](https://github.com/sous-chefs/beyondcompare/pull/47) | Apr 22, 2026 |
-| [dpkg_autostart](https://github.com/sous-chefs/dpkg_autostart) | [chore(main): release 1.0.0](https://github.com/sous-chefs/dpkg_autostart/pull/61) | Apr 21, 2026 |
+| [jenkins](https://github.com/sous-chefs/jenkins) | [chore(main): release 11.0.1](https://github.com/sous-chefs/jenkins/pull/858) | Apr 28, 2026 |
+| [yum-remi-chef](https://github.com/sous-chefs/yum-remi-chef) | [feat!: migrate yum-remi-chef to custom resources](https://github.com/sous-chefs/yum-remi-chef/pull/75) | Apr 27, 2026 |
+| [emacs](https://github.com/sous-chefs/emacs) | [chore(main): release 1.0.0](https://github.com/sous-chefs/emacs/pull/49) | Apr 27, 2026 |
+| [terraform-github-membership](https://github.com/sous-chefs/terraform-github-membership) | [chore(deps): update actions (major)](https://github.com/sous-chefs/terraform-github-membership/pull/67) | Apr 27, 2026 |
+| [firefox](https://github.com/sous-chefs/firefox) | [chore(main): release 8.0.0](https://github.com/sous-chefs/firefox/pull/50) | Apr 27, 2026 |
+| [drbd](https://github.com/sous-chefs/drbd) | [chore(main): release 5.0.0](https://github.com/sous-chefs/drbd/pull/52) | Apr 27, 2026 |
+| [filesystem](https://github.com/sous-chefs/filesystem) | [chore(main): release 6.0.0](https://github.com/sous-chefs/filesystem/pull/151) | Apr 26, 2026 |
+| [mysql](https://github.com/sous-chefs/mysql) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/mysql/pull/742) | Apr 26, 2026 |
+| [aws](https://github.com/sous-chefs/aws) | [fix(deps): resolve dependency issues by updating aws-parti tions to ~> 1.525.0](https://github.com/sous-chefs/aws/pull/535) | Apr 26, 2026 |
+| [fail2ban](https://github.com/sous-chefs/fail2ban) | [chore(main): release 8.0.0](https://github.com/sous-chefs/fail2ban/pull/151) | Apr 25, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
