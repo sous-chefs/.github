@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
+| [openssh](https://github.com/sous-chefs/openssh) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/openssh/pull/213) | Apr 30, 2026 |
+| [aws](https://github.com/sous-chefs/aws) | [fix(deps): resolve dependency issues by updating aws-parti tions to ~> 1.525.0](https://github.com/sous-chefs/aws/pull/535) | Apr 29, 2026 |
+| [firewall](https://github.com/sous-chefs/firewall) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/firewall/pull/323) | Apr 29, 2026 |
+| [mcelog](https://github.com/sous-chefs/mcelog) | [chore(main): release 3.0.0](https://github.com/sous-chefs/mcelog/pull/47) | Apr 29, 2026 |
+| [nexus](https://github.com/sous-chefs/nexus) | [feat!: migrate nexus to custom resources](https://github.com/sous-chefs/nexus/pull/68) | Apr 29, 2026 |
+| [fastly](https://github.com/sous-chefs/fastly) | [feat!: migrate fastly to custom resources](https://github.com/sous-chefs/fastly/pull/57) | Apr 29, 2026 |
+| [postfix](https://github.com/sous-chefs/postfix) | [feat!: migrate postfix to custom resources](https://github.com/sous-chefs/postfix/pull/228) | Apr 29, 2026 |
+| [prometheus](https://github.com/sous-chefs/prometheus) | [feat!: migrate prometheus resources](https://github.com/sous-chefs/prometheus/pull/36) | Apr 29, 2026 |
+| [nginx_simplecgi](https://github.com/sous-chefs/nginx_simplecgi) | [feat!: migrate nginx_simplecgi resources](https://github.com/sous-chefs/nginx_simplecgi/pull/71) | Apr 29, 2026 |
 | [jenkins](https://github.com/sous-chefs/jenkins) | [chore(main): release 11.0.1](https://github.com/sous-chefs/jenkins/pull/858) | Apr 28, 2026 |
-| [yum-remi-chef](https://github.com/sous-chefs/yum-remi-chef) | [feat!: migrate yum-remi-chef to custom resources](https://github.com/sous-chefs/yum-remi-chef/pull/75) | Apr 27, 2026 |
-| [emacs](https://github.com/sous-chefs/emacs) | [chore(main): release 1.0.0](https://github.com/sous-chefs/emacs/pull/49) | Apr 27, 2026 |
-| [terraform-github-membership](https://github.com/sous-chefs/terraform-github-membership) | [chore(deps): update actions (major)](https://github.com/sous-chefs/terraform-github-membership/pull/67) | Apr 27, 2026 |
-| [firefox](https://github.com/sous-chefs/firefox) | [chore(main): release 8.0.0](https://github.com/sous-chefs/firefox/pull/50) | Apr 27, 2026 |
-| [drbd](https://github.com/sous-chefs/drbd) | [chore(main): release 5.0.0](https://github.com/sous-chefs/drbd/pull/52) | Apr 27, 2026 |
-| [filesystem](https://github.com/sous-chefs/filesystem) | [chore(main): release 6.0.0](https://github.com/sous-chefs/filesystem/pull/151) | Apr 26, 2026 |
-| [mysql](https://github.com/sous-chefs/mysql) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/mysql/pull/742) | Apr 26, 2026 |
-| [aws](https://github.com/sous-chefs/aws) | [fix(deps): resolve dependency issues by updating aws-parti tions to ~> 1.525.0](https://github.com/sous-chefs/aws/pull/535) | Apr 26, 2026 |
-| [fail2ban](https://github.com/sous-chefs/fail2ban) | [chore(main): release 8.0.0](https://github.com/sous-chefs/fail2ban/pull/151) | Apr 25, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
