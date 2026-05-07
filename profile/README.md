@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [openssh](https://github.com/sous-chefs/openssh) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/openssh/pull/213) | Apr 30, 2026 |
-| [aws](https://github.com/sous-chefs/aws) | [fix(deps): resolve dependency issues by updating aws-parti tions to ~> 1.525.0](https://github.com/sous-chefs/aws/pull/535) | Apr 29, 2026 |
-| [firewall](https://github.com/sous-chefs/firewall) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/firewall/pull/323) | Apr 29, 2026 |
-| [mcelog](https://github.com/sous-chefs/mcelog) | [chore(main): release 3.0.0](https://github.com/sous-chefs/mcelog/pull/47) | Apr 29, 2026 |
-| [nexus](https://github.com/sous-chefs/nexus) | [feat!: migrate nexus to custom resources](https://github.com/sous-chefs/nexus/pull/68) | Apr 29, 2026 |
-| [fastly](https://github.com/sous-chefs/fastly) | [feat!: migrate fastly to custom resources](https://github.com/sous-chefs/fastly/pull/57) | Apr 29, 2026 |
-| [postfix](https://github.com/sous-chefs/postfix) | [feat!: migrate postfix to custom resources](https://github.com/sous-chefs/postfix/pull/228) | Apr 29, 2026 |
-| [prometheus](https://github.com/sous-chefs/prometheus) | [feat!: migrate prometheus resources](https://github.com/sous-chefs/prometheus/pull/36) | Apr 29, 2026 |
-| [nginx_simplecgi](https://github.com/sous-chefs/nginx_simplecgi) | [feat!: migrate nginx_simplecgi resources](https://github.com/sous-chefs/nginx_simplecgi/pull/71) | Apr 29, 2026 |
-| [jenkins](https://github.com/sous-chefs/jenkins) | [chore(main): release 11.0.1](https://github.com/sous-chefs/jenkins/pull/858) | Apr 28, 2026 |
+| [nscd](https://github.com/sous-chefs/nscd) | [chore(main): release 7.0.0](https://github.com/sous-chefs/nscd/pull/62) | May 06, 2026 |
+| [tftp](https://github.com/sous-chefs/tftp) | [chore(main): release 5.0.0](https://github.com/sous-chefs/tftp/pull/50) | May 06, 2026 |
+| [memcached](https://github.com/sous-chefs/memcached) | [chore(main): release 8.0.0](https://github.com/sous-chefs/memcached/pull/184) | May 06, 2026 |
+| [rsync](https://github.com/sous-chefs/rsync) | [chore(main): release 5.0.0](https://github.com/sous-chefs/rsync/pull/80) | May 06, 2026 |
+| [foreman](https://github.com/sous-chefs/foreman) | [chore(main): release 0.1.13](https://github.com/sous-chefs/foreman/pull/57) | May 06, 2026 |
+| [yum-mysql-community](https://github.com/sous-chefs/yum-mysql-community) | [ci: grant reusable workflow permissions](https://github.com/sous-chefs/yum-mysql-community/pull/82) | May 05, 2026 |
+| [yum-epel](https://github.com/sous-chefs/yum-epel) | [feat!: migrate yum-epel to custom resources](https://github.com/sous-chefs/yum-epel/pull/114) | May 05, 2026 |
+| [yum-almalinux](https://github.com/sous-chefs/yum-almalinux) | [chore(main): release 3.0.0](https://github.com/sous-chefs/yum-almalinux/pull/32) | May 05, 2026 |
+| [yum](https://github.com/sous-chefs/yum) | [chore(main): release 8.0.0](https://github.com/sous-chefs/yum/pull/246) | May 05, 2026 |
+| [yum-remi-chef](https://github.com/sous-chefs/yum-remi-chef) | [chore(main): release 9.1.0](https://github.com/sous-chefs/yum-remi-chef/pull/78) | May 05, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
