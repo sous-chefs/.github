@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [nscd](https://github.com/sous-chefs/nscd) | [chore(main): release 7.0.0](https://github.com/sous-chefs/nscd/pull/62) | May 06, 2026 |
-| [tftp](https://github.com/sous-chefs/tftp) | [chore(main): release 5.0.0](https://github.com/sous-chefs/tftp/pull/50) | May 06, 2026 |
-| [memcached](https://github.com/sous-chefs/memcached) | [chore(main): release 8.0.0](https://github.com/sous-chefs/memcached/pull/184) | May 06, 2026 |
-| [rsync](https://github.com/sous-chefs/rsync) | [chore(main): release 5.0.0](https://github.com/sous-chefs/rsync/pull/80) | May 06, 2026 |
-| [foreman](https://github.com/sous-chefs/foreman) | [chore(main): release 0.1.13](https://github.com/sous-chefs/foreman/pull/57) | May 06, 2026 |
-| [yum-mysql-community](https://github.com/sous-chefs/yum-mysql-community) | [ci: grant reusable workflow permissions](https://github.com/sous-chefs/yum-mysql-community/pull/82) | May 05, 2026 |
-| [yum-epel](https://github.com/sous-chefs/yum-epel) | [feat!: migrate yum-epel to custom resources](https://github.com/sous-chefs/yum-epel/pull/114) | May 05, 2026 |
-| [yum-almalinux](https://github.com/sous-chefs/yum-almalinux) | [chore(main): release 3.0.0](https://github.com/sous-chefs/yum-almalinux/pull/32) | May 05, 2026 |
-| [yum](https://github.com/sous-chefs/yum) | [chore(main): release 8.0.0](https://github.com/sous-chefs/yum/pull/246) | May 05, 2026 |
-| [yum-remi-chef](https://github.com/sous-chefs/yum-remi-chef) | [chore(main): release 9.1.0](https://github.com/sous-chefs/yum-remi-chef/pull/78) | May 05, 2026 |
+| [php](https://github.com/sous-chefs/php) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/php/pull/387) | May 13, 2026 |
+| [squid](https://github.com/sous-chefs/squid) | [chore(main): release 6.0.0](https://github.com/sous-chefs/squid/pull/172) | May 13, 2026 |
+| [graphite](https://github.com/sous-chefs/graphite) | [chore(main): release 3.0.0](https://github.com/sous-chefs/graphite/pull/413) | May 13, 2026 |
+| [postfix](https://github.com/sous-chefs/postfix) | [chore(main): release 7.0.0](https://github.com/sous-chefs/postfix/pull/229) | May 13, 2026 |
+| [network_interfaces](https://github.com/sous-chefs/network_interfaces) | [chore(main): release 3.0.0](https://github.com/sous-chefs/network_interfaces/pull/64) | May 13, 2026 |
+| [jenkins](https://github.com/sous-chefs/jenkins) | [chore(main): release 11.0.1](https://github.com/sous-chefs/jenkins/pull/858) | May 13, 2026 |
+| [aws](https://github.com/sous-chefs/aws) | [fix(deps): resolve dependency issues by updating aws-parti tions to ~> 1.525.0](https://github.com/sous-chefs/aws/pull/535) | May 13, 2026 |
+| [golang](https://github.com/sous-chefs/golang) | [chore(main): release 7.0.0](https://github.com/sous-chefs/golang/pull/156) | May 13, 2026 |
+| [perl](https://github.com/sous-chefs/perl) | [chore(main): release 9.0.0](https://github.com/sous-chefs/perl/pull/96) | May 13, 2026 |
+| [sssd_ldap](https://github.com/sous-chefs/sssd_ldap) | [chore(main): release 6.0.0](https://github.com/sous-chefs/sssd_ldap/pull/81) | May 13, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
