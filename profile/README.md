@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [php](https://github.com/sous-chefs/php) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/php/pull/387) | May 13, 2026 |
-| [squid](https://github.com/sous-chefs/squid) | [chore(main): release 6.0.0](https://github.com/sous-chefs/squid/pull/172) | May 13, 2026 |
-| [graphite](https://github.com/sous-chefs/graphite) | [chore(main): release 3.0.0](https://github.com/sous-chefs/graphite/pull/413) | May 13, 2026 |
-| [postfix](https://github.com/sous-chefs/postfix) | [chore(main): release 7.0.0](https://github.com/sous-chefs/postfix/pull/229) | May 13, 2026 |
-| [network_interfaces](https://github.com/sous-chefs/network_interfaces) | [chore(main): release 3.0.0](https://github.com/sous-chefs/network_interfaces/pull/64) | May 13, 2026 |
-| [jenkins](https://github.com/sous-chefs/jenkins) | [chore(main): release 11.0.1](https://github.com/sous-chefs/jenkins/pull/858) | May 13, 2026 |
-| [aws](https://github.com/sous-chefs/aws) | [fix(deps): resolve dependency issues by updating aws-parti tions to ~> 1.525.0](https://github.com/sous-chefs/aws/pull/535) | May 13, 2026 |
-| [golang](https://github.com/sous-chefs/golang) | [chore(main): release 7.0.0](https://github.com/sous-chefs/golang/pull/156) | May 13, 2026 |
-| [perl](https://github.com/sous-chefs/perl) | [chore(main): release 9.0.0](https://github.com/sous-chefs/perl/pull/96) | May 13, 2026 |
-| [sssd_ldap](https://github.com/sous-chefs/sssd_ldap) | [chore(main): release 6.0.0](https://github.com/sous-chefs/sssd_ldap/pull/81) | May 13, 2026 |
+| [chef-splunk](https://github.com/sous-chefs/chef-splunk) | [chore(main): release chef-splunk 10.0.0](https://github.com/sous-chefs/chef-splunk/pull/283) | May 20, 2026 |
+| [nagios](https://github.com/sous-chefs/nagios) | [chore(main): release 13.0.0](https://github.com/sous-chefs/nagios/pull/696) | May 20, 2026 |
+| [cinc-omnibus](https://github.com/sous-chefs/cinc-omnibus) | [chore(main): release 2.0.0](https://github.com/sous-chefs/cinc-omnibus/pull/58) | May 20, 2026 |
+| [unbound](https://github.com/sous-chefs/unbound) | [feat!: modernize unbound resources and CI](https://github.com/sous-chefs/unbound/pull/98) | May 20, 2026 |
+| [bind](https://github.com/sous-chefs/bind) | [chore(main): release bind 4.0.0](https://github.com/sous-chefs/bind/pull/112) | May 20, 2026 |
+| [sensors](https://github.com/sous-chefs/sensors) | [chore(main): release 3.0.0](https://github.com/sous-chefs/sensors/pull/77) | May 20, 2026 |
+| [line](https://github.com/sous-chefs/line) | [chore(main): release 5.0.0](https://github.com/sous-chefs/line/pull/292) | May 20, 2026 |
+| [chef_ca](https://github.com/sous-chefs/chef_ca) | [refactor: finish chef_ca migration](https://github.com/sous-chefs/chef_ca/pull/47) | May 20, 2026 |
+| [selinux](https://github.com/sous-chefs/selinux) | [chore: deprecate selinux cookbook](https://github.com/sous-chefs/selinux/pull/145) | May 20, 2026 |
+| [vagrant](https://github.com/sous-chefs/vagrant) | [chore(main): release 5.0.0](https://github.com/sous-chefs/vagrant/pull/207) | May 20, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
