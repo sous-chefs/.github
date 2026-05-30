@@ -116,6 +116,8 @@ jobs:
   check-links:
     name: runner / linkspector
     runs-on: ubuntu-latest
+    # TODO: Allowed to fail due to https://github.com/UmbrellaDocs/action-linkspector/issues/62
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v6
       - name: Run linkspector
