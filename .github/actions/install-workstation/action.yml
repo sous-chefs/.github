@@ -12,7 +12,7 @@ inputs:
       Cinc Workstation version to install. Use major version (e.g. '24') for latest
       in that series, or 'latest' for the newest stable release.
     required: false
-    default: '24'
+    default: 'latest'
   channel:
     description: 'Release channel: stable or current'
     required: false
