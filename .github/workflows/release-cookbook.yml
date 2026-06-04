@@ -58,25 +58,54 @@ jobs:
     needs: release-please
     if: ${{ needs.release-please.outputs.release_created }}
     runs-on: ubuntu-latest
-    container:
-      image: chef/chefworkstation:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Configure Chef credentials
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: "1.26.3"
+
+      - name: Install cinc
         run: |
-          mkdir -p ~/.chef
-          echo "${{ secrets.supermarket_key }}" > ~/.chef/supermarket.pem
-          chmod 600 ~/.chef/supermarket.pem
+          GOBIN="${RUNNER_TEMP}/bin" go install github.com/tas50/cinc-cli/apps/cinc@v0.6.1
+          sudo install "${RUNNER_TEMP}/bin/cinc" /usr/local/bin/cinc
+          cinc version
+        shell: bash
+
+      - name: Configure Cinc credentials
+        run: |
+          mkdir -p ~/.cinc
+          key_path="${HOME}/.cinc/supermarket.pem"
+          credentials_path="${HOME}/.cinc/credentials"
+          printf '%s\n' "${{ secrets.supermarket_key }}" > "${key_path}"
+          chmod 600 "${key_path}"
+          {
+            echo "[default]"
+            echo 'supermarket_site = "https://supermarket.chef.io"'
+            printf 'client_name = "%s"\n' "${{ secrets.supermarket_user }}"
+            printf 'client_key = "%s"\n' "${key_path}"
+          } > "${credentials_path}"
+          chmod 600 "${credentials_path}"
+        shell: bash
+
+      - name: Validate Supermarket package
+        run: |
+          cinc supermarket share ${{ github.event.repository.name }} \
+            --dry-run \
+            --cookbook-path ../ \
+            --config ~/.cinc/credentials \
+            --format json
+        shell: bash
 
       - name: Publish to Chef Supermarket
         run: |
-          knife supermarket share ${{ github.event.repository.name }} \
+          cinc supermarket share ${{ github.event.repository.name }} \
             --supermarket-site https://supermarket.chef.io \
-            --key ~/.chef/supermarket.pem \
-            --user ${{ secrets.supermarket_user }} \
-            --cookbook-path ../
+            --cookbook-path ../ \
+            --config ~/.cinc/credentials
+        shell: bash
 
   notify-slack:
     needs: [release-please, publish-to-supermarket]
