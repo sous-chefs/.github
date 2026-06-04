@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [docker](https://github.com/sous-chefs/docker) | [chore(main): release 12.0.0](https://github.com/sous-chefs/docker/pull/1337) | May 27, 2026 |
-| [chef-ruby-lvm](https://github.com/sous-chefs/chef-ruby-lvm) | [Update open4 requirement from ~> 0.9, >= 0.9.6 to >= 0.9.6, < 2.0](https://github.com/sous-chefs/chef-ruby-lvm/pull/11) | May 27, 2026 |
-| [aws](https://github.com/sous-chefs/aws) | [fix(deps): resolve dependency issues by updating aws-parti tions to ~> 1.525.0](https://github.com/sous-chefs/aws/pull/535) | May 26, 2026 |
-| [jenkins](https://github.com/sous-chefs/jenkins) | [chore(main): release 11.0.1](https://github.com/sous-chefs/jenkins/pull/858) | May 26, 2026 |
-| [aptly](https://github.com/sous-chefs/aptly) | [chore(main): release 4.0.1](https://github.com/sous-chefs/aptly/pull/157) | May 25, 2026 |
-| [golang](https://github.com/sous-chefs/golang) | [chore(main): release 7.0.0](https://github.com/sous-chefs/golang/pull/156) | May 24, 2026 |
-| [users](https://github.com/sous-chefs/users) | [chore(main): release 9.0.0](https://github.com/sous-chefs/users/pull/515) | May 24, 2026 |
-| [vagrant](https://github.com/sous-chefs/vagrant) | [chore(main): release 5.0.0](https://github.com/sous-chefs/vagrant/pull/207) | May 24, 2026 |
-| [unbound](https://github.com/sous-chefs/unbound) | [chore(main): release 4.0.0](https://github.com/sous-chefs/unbound/pull/99) | May 21, 2026 |
-| [chef-splunk](https://github.com/sous-chefs/chef-splunk) | [chore(main): release chef-splunk 10.0.0](https://github.com/sous-chefs/chef-splunk/pull/283) | May 20, 2026 |
+| [chef-ruby-lvm](https://github.com/sous-chefs/chef-ruby-lvm) | [Fix LVM version parsing for RHEL 10 output format](https://github.com/sous-chefs/chef-ruby-lvm/pull/16) | Jun 03, 2026 |
+| [homebrew](https://github.com/sous-chefs/homebrew) | [chore(main): release 7.0.0](https://github.com/sous-chefs/homebrew/pull/211) | Jun 02, 2026 |
+| [postgresql](https://github.com/sous-chefs/postgresql) | [chore(main): release 13.0.4](https://github.com/sous-chefs/postgresql/pull/824) | Jun 02, 2026 |
+| [chef-ruby-lvm-attrib](https://github.com/sous-chefs/chef-ruby-lvm-attrib) | [fix: Added v2_03_33 attributes](https://github.com/sous-chefs/chef-ruby-lvm-attrib/pull/94) | Jun 01, 2026 |
+| [keepalived](https://github.com/sous-chefs/keepalived) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/keepalived/pull/169) | Jun 01, 2026 |
+| [cron](https://github.com/sous-chefs/cron) | [chore(main): release 8.0.0](https://github.com/sous-chefs/cron/pull/197) | Jun 01, 2026 |
+| [logrotate](https://github.com/sous-chefs/logrotate) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/logrotate/pull/215) | Jun 01, 2026 |
+| [openssh](https://github.com/sous-chefs/openssh) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/openssh/pull/213) | Jun 01, 2026 |
+| [postfix](https://github.com/sous-chefs/postfix) | [chore(main): release 7.0.0](https://github.com/sous-chefs/postfix/pull/229) | Jun 01, 2026 |
+| [mysql](https://github.com/sous-chefs/mysql) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/mysql/pull/742) | Jun 01, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
