@@ -15,6 +15,10 @@ name: Lint & Unit test
         required: false
         type: string
         default: "ubuntu-latest"
+      run_linkspector:
+        required: false
+        type: boolean
+        default: false
       fail_on_link_errors:
         required: false
         type: boolean
@@ -116,6 +120,7 @@ jobs:
   check-links:
     name: runner / linkspector
     runs-on: ubuntu-latest
+    if: ${{ inputs.run_linkspector }}
     # TODO: Allowed to fail due to https://github.com/UmbrellaDocs/action-linkspector/issues/62
     continue-on-error: true
     steps:
