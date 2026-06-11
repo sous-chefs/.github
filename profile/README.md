@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [chef-ruby-lvm](https://github.com/sous-chefs/chef-ruby-lvm) | [Fix LVM version parsing for RHEL 10 output format](https://github.com/sous-chefs/chef-ruby-lvm/pull/16) | Jun 03, 2026 |
-| [homebrew](https://github.com/sous-chefs/homebrew) | [chore(main): release 7.0.0](https://github.com/sous-chefs/homebrew/pull/211) | Jun 02, 2026 |
-| [postgresql](https://github.com/sous-chefs/postgresql) | [chore(main): release 13.0.4](https://github.com/sous-chefs/postgresql/pull/824) | Jun 02, 2026 |
-| [chef-ruby-lvm-attrib](https://github.com/sous-chefs/chef-ruby-lvm-attrib) | [fix: Added v2_03_33 attributes](https://github.com/sous-chefs/chef-ruby-lvm-attrib/pull/94) | Jun 01, 2026 |
-| [keepalived](https://github.com/sous-chefs/keepalived) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/keepalived/pull/169) | Jun 01, 2026 |
-| [cron](https://github.com/sous-chefs/cron) | [chore(main): release 8.0.0](https://github.com/sous-chefs/cron/pull/197) | Jun 01, 2026 |
-| [logrotate](https://github.com/sous-chefs/logrotate) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/logrotate/pull/215) | Jun 01, 2026 |
-| [openssh](https://github.com/sous-chefs/openssh) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/openssh/pull/213) | Jun 01, 2026 |
-| [postfix](https://github.com/sous-chefs/postfix) | [chore(main): release 7.0.0](https://github.com/sous-chefs/postfix/pull/229) | Jun 01, 2026 |
-| [mysql](https://github.com/sous-chefs/mysql) | [Update sous-chefs/.github action to v6](https://github.com/sous-chefs/mysql/pull/742) | Jun 01, 2026 |
+| [chef-ruby-lvm](https://github.com/sous-chefs/chef-ruby-lvm) | [Migrate Renovate config](https://github.com/sous-chefs/chef-ruby-lvm/pull/20) | Jun 10, 2026 |
+| [yum-fedora](https://github.com/sous-chefs/yum-fedora) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/yum-fedora/pull/38) | Jun 10, 2026 |
+| [yum-erlang_solutions](https://github.com/sous-chefs/yum-erlang_solutions) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/yum-erlang_solutions/pull/52) | Jun 10, 2026 |
+| [yum-epel](https://github.com/sous-chefs/yum-epel) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/yum-epel/pull/118) | Jun 10, 2026 |
+| [yum-elrepo](https://github.com/sous-chefs/yum-elrepo) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/yum-elrepo/pull/56) | Jun 10, 2026 |
+| [yum-centos](https://github.com/sous-chefs/yum-centos) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/yum-centos/pull/86) | Jun 10, 2026 |
+| [yum-amazon](https://github.com/sous-chefs/yum-amazon) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/yum-amazon/pull/42) | Jun 10, 2026 |
+| [varnish](https://github.com/sous-chefs/varnish) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/varnish/pull/271) | Jun 10, 2026 |
+| [vagrant](https://github.com/sous-chefs/vagrant) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/vagrant/pull/209) | Jun 10, 2026 |
+| [users](https://github.com/sous-chefs/users) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/users/pull/518) | Jun 10, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
