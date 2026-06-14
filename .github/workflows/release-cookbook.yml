@@ -62,15 +62,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Setup Go
-        uses: actions/setup-go@v6
-        with:
-          go-version: "1.26.4"
-
       - name: Install cinc
+        env:
+          CINC_VERSION: v0.8.0
         run: |
-          GOBIN="${RUNNER_TEMP}/bin" go install github.com/tas50/cinc-cli/apps/cinc@v0.6.1
-          sudo install "${RUNNER_TEMP}/bin/cinc" /usr/local/bin/cinc
+          url="https://github.com/tas50/cinc-cli/releases/download/${CINC_VERSION}/cinc_${CINC_VERSION}_linux_amd64.tar.gz"
+          curl -fsSL "${url}" -o "${RUNNER_TEMP}/cinc.tar.gz"
+          tar -xzf "${RUNNER_TEMP}/cinc.tar.gz" -C "${RUNNER_TEMP}" cinc
+          sudo install "${RUNNER_TEMP}/cinc" /usr/local/bin/cinc
           cinc version
         shell: bash
 
