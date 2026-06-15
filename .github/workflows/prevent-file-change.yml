@@ -13,7 +13,7 @@ name: "Prevent file change reusable"
         description: Comma-separated list of trusted authors for metadata changes
         required: false
         type: string
-        default: &trusted_authors "bmhughes,damacus,kitchen-porter,MarkGibbons,ramereth,Stromweld,xorima,renovate[bot]"
+        default: bmhughes,damacus,kitchen-porter,MarkGibbons,ramereth,Stromweld,xorima,renovate[bot]
       workflow_pattern:
         description: Pattern of workflow files to monitor
         required: false
@@ -23,7 +23,7 @@ name: "Prevent file change reusable"
         description: Comma-separated list of trusted authors for workflow changes
         required: false
         type: string
-        default: *trusted_authors
+        default: bmhughes,damacus,kitchen-porter,MarkGibbons,ramereth,Stromweld,xorima,renovate[bot]
       workflow_close_pr:
         description: Close the PR if workflow files change
         required: false
