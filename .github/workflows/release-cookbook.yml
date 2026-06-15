@@ -54,57 +54,85 @@ jobs:
           subject-name: ${{ github.event.repository.name }}-${{ steps.release.outputs.tag_name }}
           subject-digest: sha256:${{ steps.upload.outputs.artifact-digest }}
 
+  # TODO: cinc-cli based publishing is disabled until a proper workaround is
+  # found. Reverted to the prior knife-based method below. See the cinc-cli
+  # implementation kept here for reference.
+  #
+  # publish-to-supermarket:
+  #   needs: release-please
+  #   if: ${{ needs.release-please.outputs.release_created }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v6
+  #
+  #     - name: Install cinc
+  #       env:
+  #         CINC_VERSION: v0.8.0
+  #       run: |
+  #         url="https://github.com/tas50/cinc-cli/releases/download/${CINC_VERSION}/cinc_${CINC_VERSION}_linux_amd64.tar.gz"
+  #         curl -fsSL "${url}" -o "${RUNNER_TEMP}/cinc.tar.gz"
+  #         tar -xzf "${RUNNER_TEMP}/cinc.tar.gz" -C "${RUNNER_TEMP}" --strip-components=1 "cinc_${CINC_VERSION}_linux_amd64/cinc"
+  #         sudo install "${RUNNER_TEMP}/cinc" /usr/local/bin/cinc
+  #         cinc version
+  #       shell: bash
+  #
+  #     - name: Configure Cinc credentials
+  #       run: |
+  #         mkdir -p ~/.cinc
+  #         key_path="${HOME}/.cinc/supermarket.pem"
+  #         credentials_path="${HOME}/.cinc/credentials"
+  #         printf '%s\n' "${{ secrets.supermarket_key }}" > "${key_path}"
+  #         chmod 600 "${key_path}"
+  #         {
+  #           echo "[default]"
+  #           echo 'supermarket_site = "https://supermarket.chef.io"'
+  #           printf 'client_name = "%s"\n' "${{ secrets.supermarket_user }}"
+  #           printf 'client_key = "%s"\n' "${key_path}"
+  #         } > "${credentials_path}"
+  #         chmod 600 "${credentials_path}"
+  #       shell: bash
+  #
+  #     - name: Validate Supermarket package
+  #       run: |
+  #         cinc supermarket share ${{ github.event.repository.name }} \
+  #           --dry-run \
+  #           --cookbook-path ../ \
+  #           --config ~/.cinc/credentials \
+  #           --format json
+  #       shell: bash
+  #
+  #     - name: Publish to Chef Supermarket
+  #       run: |
+  #         cinc supermarket share ${{ github.event.repository.name }} \
+  #           --supermarket-site https://supermarket.chef.io \
+  #           --cookbook-path ../ \
+  #           --config ~/.cinc/credentials
+  #       shell: bash
+
   publish-to-supermarket:
     needs: release-please
     if: ${{ needs.release-please.outputs.release_created }}
     runs-on: ubuntu-latest
+    container:
+      image: cincproject/workstation:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Install cinc
-        env:
-          CINC_VERSION: v0.8.0
-        run: |
-          url="https://github.com/tas50/cinc-cli/releases/download/${CINC_VERSION}/cinc_${CINC_VERSION}_linux_amd64.tar.gz"
-          curl -fsSL "${url}" -o "${RUNNER_TEMP}/cinc.tar.gz"
-          tar -xzf "${RUNNER_TEMP}/cinc.tar.gz" -C "${RUNNER_TEMP}" --strip-components=1 "cinc_${CINC_VERSION}_linux_amd64/cinc"
-          sudo install "${RUNNER_TEMP}/cinc" /usr/local/bin/cinc
-          cinc version
-        shell: bash
-
       - name: Configure Cinc credentials
         run: |
           mkdir -p ~/.cinc
-          key_path="${HOME}/.cinc/supermarket.pem"
-          credentials_path="${HOME}/.cinc/credentials"
-          printf '%s\n' "${{ secrets.supermarket_key }}" > "${key_path}"
-          chmod 600 "${key_path}"
-          {
-            echo "[default]"
-            echo 'supermarket_site = "https://supermarket.chef.io"'
-            printf 'client_name = "%s"\n' "${{ secrets.supermarket_user }}"
-            printf 'client_key = "%s"\n' "${key_path}"
-          } > "${credentials_path}"
-          chmod 600 "${credentials_path}"
-        shell: bash
-
-      - name: Validate Supermarket package
-        run: |
-          cinc supermarket share ${{ github.event.repository.name }} \
-            --dry-run \
-            --cookbook-path ../ \
-            --config ~/.cinc/credentials \
-            --format json
-        shell: bash
+          echo "${{ secrets.supermarket_key }}" > ~/.cinc/supermarket.pem
+          chmod 600 ~/.cinc/supermarket.pem
 
       - name: Publish to Chef Supermarket
         run: |
-          cinc supermarket share ${{ github.event.repository.name }} \
+          knife supermarket share ${{ github.event.repository.name }} \
             --supermarket-site https://supermarket.chef.io \
-            --cookbook-path ../ \
-            --config ~/.cinc/credentials
-        shell: bash
+            --key ~/.cinc/supermarket.pem \
+            --user ${{ secrets.supermarket_user }} \
+            --cookbook-path ../
 
   notify-slack:
     needs: [release-please, publish-to-supermarket]
