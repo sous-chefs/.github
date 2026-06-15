@@ -3,6 +3,27 @@ name: release-please
 
 "on":
   workflow_call:
+    inputs:
+      supermarket_publisher:
+        description: >
+          Publisher used for Chef Supermarket releases. `workstation` uses
+          Cinc Workstation and knife. `cinc-cli` uses the experimental Cinc CLI.
+        required: false
+        type: string
+        default: workstation
+      cinc_cli_version:
+        description: Cinc CLI version used when supermarket_publisher is `cinc-cli`.
+        required: false
+        type: string
+        default: v0.11.0
+      release_tag:
+        description: >
+          Existing release tag to publish. Leave empty for the normal
+          release-please path. Set this when recovering a release that was
+          created but failed to publish.
+        required: false
+        type: string
+        default: ""
     secrets:
       token: { required: true }
       supermarket_user: { required: true }
@@ -11,29 +32,88 @@ name: release-please
       slack_channel_id: { required: true }
 
 jobs:
+  validate_release_inputs:
+    runs-on: ubuntu-slim
+    steps:
+      - name: Validate Supermarket publisher
+        env:
+          SUPERMARKET_PUBLISHER: ${{ inputs.supermarket_publisher }}
+        run: |
+          case "${SUPERMARKET_PUBLISHER}" in
+            workstation|cinc-cli)
+              ;;
+            *)
+              echo "::error::supermarket_publisher must be 'workstation' or 'cinc-cli'"
+              exit 1
+              ;;
+          esac
+
   release-please:
+    needs: validate_release_inputs
     runs-on: ubuntu-slim
     outputs:
-      release_created: ${{ steps.release.outputs.release_created }}
-      tag_name: ${{ steps.release.outputs.tag_name }}
+      publish_release: ${{ steps.resolve-release.outputs.publish_release }}
+      release_created: ${{ steps.resolve-release.outputs.release_created }}
+      tag_name: ${{ steps.resolve-release.outputs.tag_name }}
       upload_url: ${{ steps.release.outputs.upload_url }}
-      body: ${{ steps.release.outputs.body }}
+      body: ${{ steps.resolve-release.outputs.body }}
     steps:
       - uses: googleapis/release-please-action@v5
         id: release
+        if: ${{ inputs.release_tag == '' }}
         with:
           token: ${{ secrets.token }}
 
+      - name: Resolve release state for publishing
+        id: resolve-release
+        env:
+          RELEASE_BODY: ${{ steps.release.outputs.body }}
+          RELEASE_CREATED: ${{ steps.release.outputs.release_created }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag_name }}
+          RECOVERY_RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          # Normal releases publish only when release-please created a new
+          # release in this run. Recovery runs skip release-please and publish
+          # the caller-provided existing tag instead.
+          if [ -n "${RECOVERY_RELEASE_TAG}" ]; then
+            {
+              echo "publish_release=true"
+              echo "release_created=false"
+              echo "tag_name=${RECOVERY_RELEASE_TAG}"
+              echo "body="
+            } >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if [ "${RELEASE_CREATED}" = "true" ]; then
+            {
+              echo "publish_release=true"
+              echo "release_created=true"
+              echo "tag_name=${RELEASE_TAG}"
+              echo "body<<RELEASE_BODY_EOF"
+              echo "${RELEASE_BODY}"
+              echo "RELEASE_BODY_EOF"
+            } >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          {
+            echo "publish_release=false"
+            echo "release_created=false"
+            echo "tag_name="
+            echo "body="
+          } >> "$GITHUB_OUTPUT"
+
       - name: Checkout
         uses: actions/checkout@v6
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.resolve-release.outputs.release_created == 'true' }}
 
       - name: Upload cookbook as artifact
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.resolve-release.outputs.release_created == 'true' }}
         id: upload
         uses: actions/upload-artifact@v7
         with:
-          name: ${{ github.event.repository.name }}-${{ steps.release.outputs.tag_name }}
+          name: ${{ github.event.repository.name }}-${{ steps.resolve-release.outputs.tag_name }}
           path: |
             .
             !.git/
@@ -48,77 +128,24 @@ jobs:
           compression-level: 6
 
       - name: Generate artifact attestation
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.resolve-release.outputs.release_created == 'true' }}
         uses: actions/attest-build-provenance@v4
         with:
-          subject-name: ${{ github.event.repository.name }}-${{ steps.release.outputs.tag_name }}
+          subject-name: ${{ github.event.repository.name }}-${{ steps.resolve-release.outputs.tag_name }}
           subject-digest: sha256:${{ steps.upload.outputs.artifact-digest }}
 
-  # TODO: cinc-cli based publishing is disabled until a proper workaround is
-  # found. Reverted to the prior knife-based method below. See the cinc-cli
-  # implementation kept here for reference.
-  #
-  # publish-to-supermarket:
-  #   needs: release-please
-  #   if: ${{ needs.release-please.outputs.release_created }}
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v6
-  #
-  #     - name: Install cinc
-  #       env:
-  #         CINC_VERSION: v0.8.0
-  #       run: |
-  #         url="https://github.com/tas50/cinc-cli/releases/download/${CINC_VERSION}/cinc_${CINC_VERSION}_linux_amd64.tar.gz"
-  #         curl -fsSL "${url}" -o "${RUNNER_TEMP}/cinc.tar.gz"
-  #         tar -xzf "${RUNNER_TEMP}/cinc.tar.gz" -C "${RUNNER_TEMP}" --strip-components=1 "cinc_${CINC_VERSION}_linux_amd64/cinc"
-  #         sudo install "${RUNNER_TEMP}/cinc" /usr/local/bin/cinc
-  #         cinc version
-  #       shell: bash
-  #
-  #     - name: Configure Cinc credentials
-  #       run: |
-  #         mkdir -p ~/.cinc
-  #         key_path="${HOME}/.cinc/supermarket.pem"
-  #         credentials_path="${HOME}/.cinc/credentials"
-  #         printf '%s\n' "${{ secrets.supermarket_key }}" > "${key_path}"
-  #         chmod 600 "${key_path}"
-  #         {
-  #           echo "[default]"
-  #           echo 'supermarket_site = "https://supermarket.chef.io"'
-  #           printf 'client_name = "%s"\n' "${{ secrets.supermarket_user }}"
-  #           printf 'client_key = "%s"\n' "${key_path}"
-  #         } > "${credentials_path}"
-  #         chmod 600 "${credentials_path}"
-  #       shell: bash
-  #
-  #     - name: Validate Supermarket package
-  #       run: |
-  #         cinc supermarket share ${{ github.event.repository.name }} \
-  #           --dry-run \
-  #           --cookbook-path ../ \
-  #           --config ~/.cinc/credentials \
-  #           --format json
-  #       shell: bash
-  #
-  #     - name: Publish to Chef Supermarket
-  #       run: |
-  #         cinc supermarket share ${{ github.event.repository.name }} \
-  #           --supermarket-site https://supermarket.chef.io \
-  #           --cookbook-path ../ \
-  #           --config ~/.cinc/credentials
-  #       shell: bash
-
-  publish-to-supermarket:
+  publish_workstation:
     needs: release-please
-    if: ${{ needs.release-please.outputs.release_created }}
+    if: ${{ needs.release-please.outputs.publish_release == 'true' && inputs.supermarket_publisher == 'workstation' }}
+    name: Publish to Supermarket with Cinc Workstation
     runs-on: ubuntu-latest
     container:
       image: cincproject/workstation:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.release-please.outputs.tag_name }}
 
       - name: Configure Cinc credentials
         run: |
@@ -134,9 +161,64 @@ jobs:
             --user ${{ secrets.supermarket_user }} \
             --cookbook-path ../
 
+  publish_cinc_cli:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.publish_release == 'true' && inputs.supermarket_publisher == 'cinc-cli' }}
+    name: Publish to Supermarket with Cinc CLI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.release-please.outputs.tag_name }}
+
+      - name: Install Cinc CLI
+        env:
+          CINC_VERSION: ${{ inputs.cinc_cli_version }}
+        run: |
+          url="https://github.com/tas50/cinc-cli/releases/download/${CINC_VERSION}/cinc_${CINC_VERSION}_linux_amd64.tar.gz"
+          curl -fsSL "${url}" -o "${RUNNER_TEMP}/cinc.tar.gz"
+          tar -xzf "${RUNNER_TEMP}/cinc.tar.gz" -C "${RUNNER_TEMP}" --strip-components=1 "cinc_${CINC_VERSION}_linux_amd64/cinc"
+          sudo install "${RUNNER_TEMP}/cinc" /usr/local/bin/cinc
+          cinc version
+        shell: bash
+
+      - name: Configure Cinc credentials
+        run: |
+          mkdir -p ~/.cinc
+          key_path="${HOME}/.cinc/supermarket.pem"
+          credentials_path="${HOME}/.cinc/credentials"
+          printf '%s\n' "${{ secrets.supermarket_key }}" > "${key_path}"
+          chmod 600 "${key_path}"
+          {
+            echo "[default]"
+            echo 'supermarket_site = "https://supermarket.chef.io"'
+            printf 'client_name = "%s"\n' "${{ secrets.supermarket_user }}"
+            printf 'client_key = "%s"\n' "${key_path}"
+          } > "${credentials_path}"
+          chmod 600 "${credentials_path}"
+        shell: bash
+
+      - name: Validate Supermarket package
+        run: |
+          cinc supermarket share ${{ github.event.repository.name }} \
+            --dry-run \
+            --cookbook-path ../ \
+            --config ~/.cinc/credentials \
+            --format json
+        shell: bash
+
+      - name: Publish to Chef Supermarket
+        run: |
+          cinc supermarket share ${{ github.event.repository.name }} \
+            --supermarket-site https://supermarket.chef.io \
+            --cookbook-path ../ \
+            --config ~/.cinc/credentials
+        shell: bash
+
   notify-slack:
-    needs: [release-please, publish-to-supermarket]
-    if: ${{ always() && needs.release-please.outputs.release_created && needs.publish-to-supermarket.result == 'success' }}
+    needs: [release-please, publish_workstation, publish_cinc_cli]
+    if: ${{ always() && needs.release-please.outputs.publish_release == 'true' && (needs.publish_workstation.result == 'success' || needs.publish_cinc_cli.result == 'success') }}
     runs-on: ubuntu-slim
     steps:
       - name: Post text to a Slack channel
@@ -158,6 +240,7 @@ jobs:
 
       - name: Convert release body to Slack mrkdwn
         id: format-body
+        if: ${{ needs.release-please.outputs.body != '' }}
         env:
           BODY: ${{ needs.release-please.outputs.body }}
         run: |
@@ -174,6 +257,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Reply to release message with release details
+        if: ${{ needs.release-please.outputs.body != '' }}
         uses: slackapi/slack-github-action@v3.0.3
         with:
           method: chat.postMessage
