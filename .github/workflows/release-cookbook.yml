@@ -64,8 +64,10 @@ jobs:
 
       - name: Install cinc
         env:
-          CINC_VERSION: v0.8.0
+          GH_TOKEN: ${{ github.token }}
         run: |
+          CINC_VERSION=$(gh release view --repo tas50/cinc-cli --json tagName -q .tagName)
+          echo "Installing cinc ${CINC_VERSION}"
           url="https://github.com/tas50/cinc-cli/releases/download/${CINC_VERSION}/cinc_${CINC_VERSION}_linux_amd64.tar.gz"
           curl -fsSL "${url}" -o "${RUNNER_TEMP}/cinc.tar.gz"
           tar -xzf "${RUNNER_TEMP}/cinc.tar.gz" -C "${RUNNER_TEMP}" --strip-components=1 "cinc_${CINC_VERSION}_linux_amd64/cinc"
