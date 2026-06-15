@@ -68,7 +68,7 @@ jobs:
         run: |
           url="https://github.com/tas50/cinc-cli/releases/download/${CINC_VERSION}/cinc_${CINC_VERSION}_linux_amd64.tar.gz"
           curl -fsSL "${url}" -o "${RUNNER_TEMP}/cinc.tar.gz"
-          tar -xzf "${RUNNER_TEMP}/cinc.tar.gz" -C "${RUNNER_TEMP}" cinc
+          tar -xzf "${RUNNER_TEMP}/cinc.tar.gz" -C "${RUNNER_TEMP}" --strip-components=1 "cinc_${CINC_VERSION}_linux_amd64/cinc"
           sudo install "${RUNNER_TEMP}/cinc" /usr/local/bin/cinc
           cinc version
         shell: bash
