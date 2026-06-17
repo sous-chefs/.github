@@ -58,7 +58,8 @@ EOF
 #!/usr/bin/env bash
 case "${1:-}" in
   --version|version)
-    echo "Chef Workstation 25.0.0"
+    echo "Redirecting to cinc" >&2
+    echo "Cinc Workstation version: 25.0.0"
     ;;
   *)
     echo "unexpected chef arguments: $*" >&2
@@ -185,6 +186,6 @@ echo "::endgroup::"
 echo "::group::Checking install-workstation output contracts"
 run_resolve_inputs_contract "workstation" "latest" "latest"
 run_resolve_inputs_contract "cinc-cli" "latest" "v9.9.9"
-run_outputs_unix_contract "workstation" "Chef Workstation 25.0.0" "chef"
+run_outputs_unix_contract "workstation" "Cinc Workstation version: 25.0.0" "chef"
 run_outputs_unix_contract "cinc-cli" "cinc 0.11.0" "cinc"
 echo "::endgroup::"

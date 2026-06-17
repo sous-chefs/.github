@@ -21,6 +21,27 @@ function Add-ActionOutput {
   "$Name=$Value" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
 }
 
+function Resolve-ExecutableVersion {
+  param([string] $Path)
+
+  $versionOutput = & $Path --version 2>&1
+  if ($LASTEXITCODE -ne 0) {
+    $versionOutput = & $Path version 2>&1
+  }
+
+  $version = $versionOutput |
+    ForEach-Object { $_.ToString() } |
+    Where-Object { $_ -and $_ -ne 'Redirecting to cinc' } |
+    Select-Object -First 1
+
+  if (-not $version) {
+    Write-Error "Could not resolve $executable version."
+    exit 1
+  }
+
+  return $version
+}
+
 $cincPath = Resolve-CommandPath -Name cinc
 $chefPath = Resolve-CommandPath -Name chef
 $knifePath = Resolve-CommandPath -Name knife
@@ -46,7 +67,7 @@ if (-not $executablePath) {
   exit 1
 }
 
-$version = (& $executablePath --version | Select-Object -First 1)
+$version = Resolve-ExecutableVersion -Path $executablePath
 
 Write-Host '::group::Resolved Cinc action outputs'
 Write-Host "distribution=$env:CINC_DISTRIBUTION"

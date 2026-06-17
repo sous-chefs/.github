@@ -14,6 +14,16 @@ emit_output() {
   printf '%s=%s\n' "${key}" "${value}" >> "${GITHUB_OUTPUT}"
 }
 
+resolve_version() {
+  local version_output
+
+  if ! version_output="$("${executable_path}" --version 2>&1)"; then
+    version_output="$("${executable_path}" version 2>&1)"
+  fi
+
+  printf '%s\n' "${version_output}" | awk 'NF && $0 != "Redirecting to cinc" { print; exit }'
+}
+
 cinc_path="$(resolve_command cinc)"
 chef_path="$(resolve_command chef)"
 knife_path="$(resolve_command knife)"
@@ -43,8 +53,12 @@ if [ -z "${executable_path}" ]; then
   exit 1
 fi
 
-version_output="$("${executable_path}" --version 2>/dev/null || "${executable_path}" version)"
-version="$(printf '%s\n' "${version_output}" | head -n 1)"
+version="$(resolve_version)"
+
+if [ -z "${version}" ]; then
+  echo "::error::Could not resolve ${executable} version." >&2
+  exit 1
+fi
 
 echo "::group::Resolved Cinc action outputs"
 echo "distribution=${CINC_DISTRIBUTION}"
