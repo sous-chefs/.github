@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [chef-ruby-lvm](https://github.com/sous-chefs/chef-ruby-lvm) | [Migrate Renovate config](https://github.com/sous-chefs/chef-ruby-lvm/pull/20) | Jun 10, 2026 |
-| [yum-fedora](https://github.com/sous-chefs/yum-fedora) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/yum-fedora/pull/38) | Jun 10, 2026 |
-| [yum-erlang_solutions](https://github.com/sous-chefs/yum-erlang_solutions) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/yum-erlang_solutions/pull/52) | Jun 10, 2026 |
-| [yum-epel](https://github.com/sous-chefs/yum-epel) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/yum-epel/pull/118) | Jun 10, 2026 |
-| [yum-elrepo](https://github.com/sous-chefs/yum-elrepo) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/yum-elrepo/pull/56) | Jun 10, 2026 |
-| [yum-centos](https://github.com/sous-chefs/yum-centos) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/yum-centos/pull/86) | Jun 10, 2026 |
-| [yum-amazon](https://github.com/sous-chefs/yum-amazon) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/yum-amazon/pull/42) | Jun 10, 2026 |
-| [varnish](https://github.com/sous-chefs/varnish) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/varnish/pull/271) | Jun 10, 2026 |
-| [vagrant](https://github.com/sous-chefs/vagrant) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/vagrant/pull/209) | Jun 10, 2026 |
-| [users](https://github.com/sous-chefs/users) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/users/pull/518) | Jun 10, 2026 |
+| [lvm](https://github.com/sous-chefs/lvm) | [chore(main): release 7.0.0](https://github.com/sous-chefs/lvm/pull/305) | Jun 17, 2026 |
+| [ark](https://github.com/sous-chefs/ark) | [feat!: complete ark custom resource migration](https://github.com/sous-chefs/ark/pull/297) | Jun 17, 2026 |
+| [meta](https://github.com/sous-chefs/meta) | [docs: publish custom resource status page](https://github.com/sous-chefs/meta/pull/144) | Jun 17, 2026 |
+| [bind](https://github.com/sous-chefs/bind) | [Update Actions to v8.0.4](https://github.com/sous-chefs/bind/pull/204) | Jun 17, 2026 |
+| [netplan](https://github.com/sous-chefs/netplan) | [Update Actions to v8.0.4](https://github.com/sous-chefs/netplan/pull/37) | Jun 17, 2026 |
+| [selinux](https://github.com/sous-chefs/selinux) | [Update Actions to v8.0.2](https://github.com/sous-chefs/selinux/pull/148) | Jun 17, 2026 |
+| [cinc-omnibus](https://github.com/sous-chefs/cinc-omnibus) | [chore(main): release 4.0.2](https://github.com/sous-chefs/cinc-omnibus/pull/71) | Jun 16, 2026 |
+| [mariadb](https://github.com/sous-chefs/mariadb) | [Update Actions to v8.0.2](https://github.com/sous-chefs/mariadb/pull/407) | Jun 16, 2026 |
+| [repo-management](https://github.com/sous-chefs/repo-management) | [Switch default product to cinc and refresh test platforms](https://github.com/sous-chefs/repo-management/pull/93) | Jun 15, 2026 |
+| [vim](https://github.com/sous-chefs/vim) | [Update Actions to v6](https://github.com/sous-chefs/vim/pull/68) | Jun 15, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
@@ -47,7 +47,6 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 
 <!-- CONTRIBUTORS_START -->
 [![damacus](https://avatars.githubusercontent.com/u/40786?v=4&s=64)](https://github.com/damacus)
-[![MarkGibbons](https://avatars.githubusercontent.com/u/3452840?v=4&s=64)](https://github.com/MarkGibbons)
 <!-- CONTRIBUTORS_END -->
 
 ---
