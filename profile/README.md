@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [lvm](https://github.com/sous-chefs/lvm) | [chore(main): release 7.0.0](https://github.com/sous-chefs/lvm/pull/305) | Jun 17, 2026 |
-| [ark](https://github.com/sous-chefs/ark) | [feat!: complete ark custom resource migration](https://github.com/sous-chefs/ark/pull/297) | Jun 17, 2026 |
-| [meta](https://github.com/sous-chefs/meta) | [docs: publish custom resource status page](https://github.com/sous-chefs/meta/pull/144) | Jun 17, 2026 |
-| [bind](https://github.com/sous-chefs/bind) | [Update Actions to v8.0.4](https://github.com/sous-chefs/bind/pull/204) | Jun 17, 2026 |
-| [netplan](https://github.com/sous-chefs/netplan) | [Update Actions to v8.0.4](https://github.com/sous-chefs/netplan/pull/37) | Jun 17, 2026 |
-| [selinux](https://github.com/sous-chefs/selinux) | [Update Actions to v8.0.2](https://github.com/sous-chefs/selinux/pull/148) | Jun 17, 2026 |
-| [cinc-omnibus](https://github.com/sous-chefs/cinc-omnibus) | [chore(main): release 4.0.2](https://github.com/sous-chefs/cinc-omnibus/pull/71) | Jun 16, 2026 |
-| [mariadb](https://github.com/sous-chefs/mariadb) | [Update Actions to v8.0.2](https://github.com/sous-chefs/mariadb/pull/407) | Jun 16, 2026 |
-| [repo-management](https://github.com/sous-chefs/repo-management) | [Switch default product to cinc and refresh test platforms](https://github.com/sous-chefs/repo-management/pull/93) | Jun 15, 2026 |
-| [vim](https://github.com/sous-chefs/vim) | [Update Actions to v6](https://github.com/sous-chefs/vim/pull/68) | Jun 15, 2026 |
+| [mysql](https://github.com/sous-chefs/mysql) | [Update Actions to v8.0.2](https://github.com/sous-chefs/mysql/pull/745) | Jun 24, 2026 |
+| [aws](https://github.com/sous-chefs/aws) | — | Jun 24, 2026 |
+| [openssh](https://github.com/sous-chefs/openssh) | [chore(main): release 3.0.1](https://github.com/sous-chefs/openssh/pull/221) | Jun 22, 2026 |
+| [trusted_certificate](https://github.com/sous-chefs/trusted_certificate) | [chore(main): release 5.1.0](https://github.com/sous-chefs/trusted_certificate/pull/79) | Jun 22, 2026 |
+| [java](https://github.com/sous-chefs/java) | [chore(main): release 15.0.0](https://github.com/sous-chefs/java/pull/761) | Jun 22, 2026 |
+| [apache2](https://github.com/sous-chefs/apache2) | [feat: fix EL httpd log/cache dir idempotency vs systemd-tmpfiles](https://github.com/sous-chefs/apache2/pull/869) | Jun 22, 2026 |
+| [cinc-omnibus](https://github.com/sous-chefs/cinc-omnibus) | [chore(main): release 4.2.0](https://github.com/sous-chefs/cinc-omnibus/pull/81) | Jun 21, 2026 |
+| [docker-engine](https://github.com/sous-chefs/docker-engine) | [Update Actions to v8.0.2](https://github.com/sous-chefs/docker-engine/pull/51) | Jun 20, 2026 |
+| [postgresql](https://github.com/sous-chefs/postgresql) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/postgresql/pull/827) | Jun 19, 2026 |
+| [postfix](https://github.com/sous-chefs/postfix) | [chore(main): release 7.0.1](https://github.com/sous-chefs/postfix/pull/237) | Jun 18, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
