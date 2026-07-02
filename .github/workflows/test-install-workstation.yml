@@ -11,7 +11,7 @@ jobs:
       install-workstation: ${{ steps.filter.outputs.install-workstation }}
     steps:
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Detect changed paths
         uses: dorny/paths-filter@v4
         id: filter
@@ -32,7 +32,7 @@ jobs:
     name: runner / install-workstation ${{ matrix.os }} v${{ matrix.version }}
     steps:
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Install Cinc Workstation
         uses: ./.github/actions/install-workstation
         with:
@@ -46,7 +46,7 @@ jobs:
     name: runner / markdownlint
     steps:
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Run Markdown Lint
         uses: DavidAnson/markdownlint-cli2-action@v23
         with:
@@ -57,7 +57,7 @@ jobs:
     name: runner / yamllint
     steps:
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Run yaml Lint
         uses: actionshub/yamllint@main
 
@@ -66,7 +66,7 @@ jobs:
     name: runner / actionlint
     steps:
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Run actionlint
         uses: raven-actions/actionlint@v2
 
