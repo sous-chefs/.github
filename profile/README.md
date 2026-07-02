@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [mysql](https://github.com/sous-chefs/mysql) | [Update Actions to v8.0.2](https://github.com/sous-chefs/mysql/pull/745) | Jun 24, 2026 |
-| [aws](https://github.com/sous-chefs/aws) | — | Jun 24, 2026 |
-| [openssh](https://github.com/sous-chefs/openssh) | [chore(main): release 3.0.1](https://github.com/sous-chefs/openssh/pull/221) | Jun 22, 2026 |
-| [trusted_certificate](https://github.com/sous-chefs/trusted_certificate) | [chore(main): release 5.1.0](https://github.com/sous-chefs/trusted_certificate/pull/79) | Jun 22, 2026 |
-| [java](https://github.com/sous-chefs/java) | [chore(main): release 15.0.0](https://github.com/sous-chefs/java/pull/761) | Jun 22, 2026 |
-| [apache2](https://github.com/sous-chefs/apache2) | [feat: fix EL httpd log/cache dir idempotency vs systemd-tmpfiles](https://github.com/sous-chefs/apache2/pull/869) | Jun 22, 2026 |
-| [cinc-omnibus](https://github.com/sous-chefs/cinc-omnibus) | [chore(main): release 4.2.0](https://github.com/sous-chefs/cinc-omnibus/pull/81) | Jun 21, 2026 |
-| [docker-engine](https://github.com/sous-chefs/docker-engine) | [Update Actions to v8.0.2](https://github.com/sous-chefs/docker-engine/pull/51) | Jun 20, 2026 |
-| [postgresql](https://github.com/sous-chefs/postgresql) | [ci: use sous-chefs workflows 8.0.1](https://github.com/sous-chefs/postgresql/pull/827) | Jun 19, 2026 |
-| [postfix](https://github.com/sous-chefs/postfix) | [chore(main): release 7.0.1](https://github.com/sous-chefs/postfix/pull/237) | Jun 18, 2026 |
+| [nagios](https://github.com/sous-chefs/nagios) | [chore(main): release 13.0.2](https://github.com/sous-chefs/nagios/pull/706) | Jul 02, 2026 |
+| [chef-splunk](https://github.com/sous-chefs/chef-splunk) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/chef-splunk/pull/377) | Jul 01, 2026 |
+| [chef_ca](https://github.com/sous-chefs/chef_ca) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/chef_ca/pull/141) | Jul 01, 2026 |
+| [chrony](https://github.com/sous-chefs/chrony) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/chrony/pull/174) | Jul 01, 2026 |
+| [cpu](https://github.com/sous-chefs/cpu) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/cpu/pull/69) | Jul 01, 2026 |
+| [cinc-omnibus](https://github.com/sous-chefs/cinc-omnibus) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/cinc-omnibus/pull/86) | Jul 01, 2026 |
+| [confluence](https://github.com/sous-chefs/confluence) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/confluence/pull/367) | Jul 01, 2026 |
+| [control_groups](https://github.com/sous-chefs/control_groups) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/control_groups/pull/95) | Jul 01, 2026 |
+| [filesystem](https://github.com/sous-chefs/filesystem) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/filesystem/pull/157) | Jul 01, 2026 |
+| [deb_pkg_unautostart](https://github.com/sous-chefs/deb_pkg_unautostart) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/deb_pkg_unautostart/pull/51) | Jul 01, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
