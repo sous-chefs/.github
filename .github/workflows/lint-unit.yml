@@ -35,14 +35,13 @@ jobs:
     name: runner / RSpec ${{ inputs.platform }}
     steps:
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Prepare Gemfile
         run: |
           if [ ! -f Gemfile ]; then
             {
               echo "source 'https://rubygems.org'"
               echo "gem 'chefspec', '>= 9.3.7'"
-              echo "gem 'berkshelf'"
               echo "gem 'fauxhai-chef'"
               echo "gem 'rspec-its'"
             } > Gemfile
@@ -102,7 +101,7 @@ jobs:
     name: runner / yamllint
     steps:
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Run yaml Lint
         uses: actionshub/yamllint@main
 
@@ -111,7 +110,7 @@ jobs:
     name: runner / markdownlint
     steps:
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Run Markdown Lint
         uses: DavidAnson/markdownlint-cli2-action@v23
         with:
@@ -124,7 +123,7 @@ jobs:
     # TODO: Allowed to fail due to https://github.com/UmbrellaDocs/action-linkspector/issues/62
     continue-on-error: true
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Run linkspector
         uses: umbrelladocs/action-linkspector@v1
         with:
@@ -136,7 +135,7 @@ jobs:
     name: runner / actionlint
     steps:
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Run actionlint
         uses: raven-actions/actionlint@v2
 
