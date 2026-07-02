@@ -76,7 +76,7 @@ jobs:
     name: runner / Cookstyle
     steps:
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Prepare Gemfile
         run: |
           if [ ! -f Gemfile ]; then
@@ -149,7 +149,7 @@ jobs:
       statuses: write # required for the status check
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Check Metadata
         uses: damacus/check-chef-metadata-action@v3
         with:
