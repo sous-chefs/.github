@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [nagios](https://github.com/sous-chefs/nagios) | [chore(main): release 13.0.2](https://github.com/sous-chefs/nagios/pull/706) | Jul 02, 2026 |
-| [chef-splunk](https://github.com/sous-chefs/chef-splunk) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/chef-splunk/pull/377) | Jul 01, 2026 |
-| [chef_ca](https://github.com/sous-chefs/chef_ca) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/chef_ca/pull/141) | Jul 01, 2026 |
-| [chrony](https://github.com/sous-chefs/chrony) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/chrony/pull/174) | Jul 01, 2026 |
-| [cpu](https://github.com/sous-chefs/cpu) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/cpu/pull/69) | Jul 01, 2026 |
-| [cinc-omnibus](https://github.com/sous-chefs/cinc-omnibus) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/cinc-omnibus/pull/86) | Jul 01, 2026 |
-| [confluence](https://github.com/sous-chefs/confluence) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/confluence/pull/367) | Jul 01, 2026 |
-| [control_groups](https://github.com/sous-chefs/control_groups) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/control_groups/pull/95) | Jul 01, 2026 |
-| [filesystem](https://github.com/sous-chefs/filesystem) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/filesystem/pull/157) | Jul 01, 2026 |
-| [deb_pkg_unautostart](https://github.com/sous-chefs/deb_pkg_unautostart) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/deb_pkg_unautostart/pull/51) | Jul 01, 2026 |
+| [nginx](https://github.com/sous-chefs/nginx) | [Update actions/checkout action to v7](https://github.com/sous-chefs/nginx/pull/668) | Jul 08, 2026 |
+| [cinc-omnibus](https://github.com/sous-chefs/cinc-omnibus) | [chore(main): release 4.2.3](https://github.com/sous-chefs/cinc-omnibus/pull/90) | Jul 07, 2026 |
+| [postgresql](https://github.com/sous-chefs/postgresql) | [chore(deps): update sous-chefs/.github action to v8.0.4](https://github.com/sous-chefs/postgresql/pull/825) | Jul 05, 2026 |
+| [nrpe](https://github.com/sous-chefs/nrpe) | [chore: migrate nrpe to Policyfile](https://github.com/sous-chefs/nrpe/pull/181) | Jul 05, 2026 |
+| [logrotate](https://github.com/sous-chefs/logrotate) | [chore: migrate logrotate to Policyfile](https://github.com/sous-chefs/logrotate/pull/221) | Jul 05, 2026 |
+| [docker](https://github.com/sous-chefs/docker) | [fix: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/docker/pull/1343) | Jul 04, 2026 |
+| [elasticsearch](https://github.com/sous-chefs/elasticsearch) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/elasticsearch/pull/841) | Jul 03, 2026 |
+| [aws](https://github.com/sous-chefs/aws) | [chore(deps): update sous-chefs/.github action to v8.0.4](https://github.com/sous-chefs/aws/pull/623) | Jul 03, 2026 |
+| [line](https://github.com/sous-chefs/line) | [chore(deps): update sous-chefs/.github action to v8.0.4](https://github.com/sous-chefs/line/pull/296) | Jul 03, 2026 |
+| [yum-mysql-community](https://github.com/sous-chefs/yum-mysql-community) | [chore: migrate to Policyfile](https://github.com/sous-chefs/yum-mysql-community/pull/89) | Jul 02, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
