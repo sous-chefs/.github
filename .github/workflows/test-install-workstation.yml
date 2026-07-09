@@ -6,7 +6,9 @@ name: Test install-workstation action
 
 jobs:
   detect-changes:
-    runs-on: ubuntu-latest
+    # This job only runs checkout plus a JavaScript action, so it can use the
+    # smaller runner without depending on preinstalled CLI tools.
+    runs-on: ubuntu-slim
     outputs:
       install-workstation: ${{ steps.filter.outputs.install-workstation }}
     steps:
@@ -19,6 +21,10 @@ jobs:
           filters: |
             install-workstation:
               - '.github/actions/install-workstation/**'
+      - name: Report changed path result
+        shell: bash
+        run: |
+          echo "install-workstation changed: ${{ steps.filter.outputs.install-workstation }}"
 
   test:
     needs: [detect-changes]
@@ -26,20 +32,129 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        version: ["24", "latest"]
+        include:
+          - os: ubuntu-latest
+            distribution: workstation
+            version: "24"
+            expected-command: chef
+          - os: ubuntu-latest
+            distribution: workstation
+            version: latest
+            expected-command: chef
+          - os: macos-latest
+            distribution: workstation
+            version: latest
+            expected-command: chef
+          - os: windows-latest
+            distribution: workstation
+            version: latest
+            expected-command: chef
+          - os: ubuntu-latest
+            distribution: cinc-cli
+            version: latest
+            expected-command: cinc
+          - os: macos-latest
+            distribution: cinc-cli
+            version: latest
+            expected-command: cinc
     runs-on: ${{ matrix.os }}
-    name: runner / install-workstation ${{ matrix.os }} v${{ matrix.version }}
+    name: runner / install ${{ matrix.distribution }} ${{ matrix.os }} v${{ matrix.version }}
     steps:
       - name: Check out code
         uses: actions/checkout@v6
-      - name: Install Cinc Workstation
+      - name: Install Cinc
+        id: install-cinc
         uses: ./.github/actions/install-workstation
         with:
+          distribution: ${{ matrix.distribution }}
           version: ${{ matrix.version }}
-      - name: Verify chef command is available
+      - name: Report action outputs
         shell: bash
-        run: chef --version
+        run: |
+          echo "distribution=${{ steps.install-cinc.outputs.distribution }}"
+          echo "requested_version=${{ steps.install-cinc.outputs.requested_version }}"
+          echo "version=${{ steps.install-cinc.outputs.version }}"
+          echo "channel=${{ steps.install-cinc.outputs.channel }}"
+          echo "runner_os=${{ steps.install-cinc.outputs.runner_os }}"
+          echo "runner_arch=${{ steps.install-cinc.outputs.runner_arch }}"
+          echo "executable=${{ steps.install-cinc.outputs.executable }}"
+          echo "executable_path=${{ steps.install-cinc.outputs.executable_path }}"
+          echo "cinc_path=${{ steps.install-cinc.outputs.cinc_path }}"
+          echo "chef_path=${{ steps.install-cinc.outputs.chef_path }}"
+          echo "knife_path=${{ steps.install-cinc.outputs.knife_path }}"
+      - name: Verify expected command is available
+        shell: bash
+        run: |
+          echo "PATH=${PATH}"
+          echo "${{ matrix.expected-command }}=$(command -v ${{ matrix.expected-command }})"
+          "${{ matrix.expected-command }}" --version || "${{ matrix.expected-command }}" version
+      - name: Verify required action outputs
+        shell: bash
+        run: |
+          test -n "${{ steps.install-cinc.outputs.distribution }}"
+          test -n "${{ steps.install-cinc.outputs.requested_version }}"
+          test -n "${{ steps.install-cinc.outputs.version }}"
+          test -n "${{ steps.install-cinc.outputs.runner_os }}"
+          test -n "${{ steps.install-cinc.outputs.runner_arch }}"
+          test -n "${{ steps.install-cinc.outputs.executable }}"
+          test -n "${{ steps.install-cinc.outputs.executable_path }}"
+
+  check-action-scripts:
+    # Keep this on ubuntu-latest because it relies on runner-provided shellcheck
+    # and pwsh. Those are not guaranteed on ubuntu-slim.
+    runs-on: ubuntu-latest
+    name: runner / action scripts
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+      - name: Show script check tools
+        shell: bash
+        run: |
+          echo "bash=$(command -v bash)"
+          echo "shellcheck=$(command -v shellcheck)"
+          echo "pwsh=$(command -v pwsh)"
+          shellcheck --version
+      - name: Show PowerShell version
+        shell: pwsh
+        run: $PSVersionTable.PSVersion
+      - name: List action implementation files
+        shell: bash
+        run: find .github/actions/install-workstation -maxdepth 4 -type f -print | sort
+      - name: Run shellcheck
+        shell: bash
+        run: |
+          echo "::group::shellcheck install-workstation scripts"
+          shellcheck \
+            .github/actions/install-workstation/scripts/*.sh \
+            .github/actions/install-workstation/tests/*.sh
+          echo "::endgroup::"
+      - name: Run script contract tests
+        shell: bash
+        run: bash .github/actions/install-workstation/tests/check-script-contracts.sh
+      - name: Check PowerShell syntax
+        shell: pwsh
+        run: |
+          Write-Host 'Checking PowerShell parser errors for install-workstation scripts.'
+          $failed = $false
+          Get-ChildItem .github/actions/install-workstation/scripts -Filter *.ps1 | ForEach-Object {
+            Write-Host "Parsing $($_.FullName)"
+            $tokens = $null
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile(
+              $_.FullName,
+              [ref] $tokens,
+              [ref] $errors
+            ) > $null
+
+            if ($errors.Count -gt 0) {
+              $errors | Format-List
+              $failed = $true
+            }
+          }
+
+          if ($failed) {
+            exit 1
+          }
 
   check-markdown:
     runs-on: ubuntu-latest
@@ -71,15 +186,20 @@ jobs:
         uses: raven-actions/actionlint@v2
 
   final:
-    runs-on: ubuntu-latest
+    # This job only aggregates upstream job results, so it does not need the
+    # full ubuntu-latest toolset.
+    runs-on: ubuntu-slim
     name: final
-    needs: [test, check-markdown, check-yaml, check-workflows]
+    needs: [test, check-action-scripts, check-markdown, check-yaml, check-workflows]
     if: always()
     steps:
       - name: Check results
+        shell: bash
         run: |
+          echo "Aggregating install-workstation workflow results."
           declare -A results=(
             [test]="${{ needs.test.result }}"
+            [check-action-scripts]="${{ needs.check-action-scripts.result }}"
             [check-markdown]="${{ needs.check-markdown.result }}"
             [check-yaml]="${{ needs.check-yaml.result }}"
             [check-workflows]="${{ needs.check-workflows.result }}"

@@ -1,16 +1,22 @@
 ---
-name: Install Cinc Workstation
+name: Install Cinc
 author: Sous Chefs
 description: >
-  Installs Cinc Workstation (open-source Chef Workstation distribution) on the
-  GitHub Actions runner. Replaces actionshub/chef-install to avoid omnitruck.chef.io
-  checksum mismatch failures. Cinc includes `chef` command wrappers for full compatibility.
+  Installs Cinc Workstation by default, or the experimental Cinc CLI when
+  explicitly requested. Cinc Workstation includes `chef` command wrappers for
+  full compatibility.
 
 inputs:
+  distribution:
+    description: >
+      Cinc distribution to install. Use `workstation` for Cinc Workstation, or
+      `cinc-cli` for the experimental standalone Cinc CLI.
+    required: false
+    default: workstation
   version:
     description: >
-      Cinc Workstation version to install. Use major version (e.g. '24') for latest
-      in that series, or 'latest' for the newest stable release.
+      Version to install. For Workstation, use a major version such as `24` or
+      `latest`. For Cinc CLI, use a tag such as `v0.11.0` or `latest`.
     required: false
     default: 'latest'
   channel:
@@ -18,47 +24,99 @@ inputs:
     required: false
     default: 'stable'
 
+outputs:
+  distribution:
+    description: Installed Cinc distribution.
+    value: ${{ steps.outputs-unix.outputs.distribution || steps.outputs-windows.outputs.distribution }}
+  version:
+    description: Installed Cinc version reported by the selected executable.
+    value: ${{ steps.outputs-unix.outputs.version || steps.outputs-windows.outputs.version }}
+  requested_version:
+    description: Version requested by the action input after resolving defaults.
+    value: ${{ steps.resolve.outputs.requested_version }}
+  channel:
+    description: Release channel requested for Workstation installs.
+    value: ${{ steps.resolve.outputs.channel }}
+  runner_os:
+    description: GitHub Actions runner OS used by the action.
+    value: ${{ steps.resolve.outputs.runner_os }}
+  runner_arch:
+    description: GitHub Actions runner architecture used by the action.
+    value: ${{ steps.resolve.outputs.runner_arch }}
+  executable:
+    description: Primary executable installed by this action.
+    value: ${{ steps.outputs-unix.outputs.executable || steps.outputs-windows.outputs.executable }}
+  executable_path:
+    description: Path to the primary executable.
+    value: ${{ steps.outputs-unix.outputs.executable_path || steps.outputs-windows.outputs.executable_path }}
+  cinc_path:
+    description: Path to `cinc`, when available.
+    value: ${{ steps.outputs-unix.outputs.cinc_path || steps.outputs-windows.outputs.cinc_path }}
+  chef_path:
+    description: Path to `chef`, when available.
+    value: ${{ steps.outputs-unix.outputs.chef_path || steps.outputs-windows.outputs.chef_path }}
+  knife_path:
+    description: Path to `knife`, when available.
+    value: ${{ steps.outputs-unix.outputs.knife_path || steps.outputs-windows.outputs.knife_path }}
+
 runs:
   using: composite
   steps:
-    - name: Install Cinc Workstation (Linux/macOS)
-      if: runner.os != 'Windows'
+    # Keep this composite action as orchestration. The platform-specific
+    # behavior lives in scripts so it can be linted and tested outside Actions.
+    - name: Resolve Cinc install inputs
+      id: resolve
       shell: bash
-      run: |
-        set -euo pipefail
-        echo "::group::Installing Cinc Workstation v${{ inputs.version }}"
-        curl -fsSL https://omnitruck.cinc.sh/install.sh \
-          | sudo bash -s -- -P cinc-workstation -c ${{ inputs.channel }} -v ${{ inputs.version }}
-        echo "::endgroup::"
+      env:
+        CINC_DISTRIBUTION: ${{ inputs.distribution }}
+        CINC_VERSION: ${{ inputs.version }}
+        CINC_CHANNEL: ${{ inputs.channel }}
+        GH_TOKEN: ${{ github.token }}
+      run: bash "$GITHUB_ACTION_PATH/scripts/resolve-inputs.sh"
 
-        # Verify installation
-        cinc --version || chef --version
+    - name: Install Cinc Workstation (Linux/macOS)
+      if: steps.resolve.outputs.distribution == 'workstation' && runner.os != 'Windows'
+      shell: bash
+      env:
+        CINC_CHANNEL: ${{ steps.resolve.outputs.channel }}
+        CINC_VERSION: ${{ steps.resolve.outputs.requested_version }}
+      run: bash "$GITHUB_ACTION_PATH/scripts/install-unix.sh"
 
     - name: Install Cinc Workstation (Windows)
+      if: steps.resolve.outputs.distribution == 'workstation' && runner.os == 'Windows'
+      shell: pwsh
+      env:
+        CINC_CHANNEL: ${{ steps.resolve.outputs.channel }}
+        CINC_VERSION: ${{ steps.resolve.outputs.requested_version }}
+      run: '& "$env:GITHUB_ACTION_PATH/scripts/install-windows.ps1"'
+
+    - name: Install Cinc CLI (Linux/macOS)
+      if: steps.resolve.outputs.distribution == 'cinc-cli'
+      shell: bash
+      env:
+        CINC_VERSION: ${{ steps.resolve.outputs.requested_version }}
+      run: bash "$GITHUB_ACTION_PATH/scripts/install-cinc-cli.sh"
+
+    - name: Refresh Cinc Workstation PATH (Windows)
+      if: steps.resolve.outputs.distribution == 'workstation' && runner.os == 'Windows'
+      shell: pwsh
+      run: '& "$env:GITHUB_ACTION_PATH/scripts/refresh-windows-path.ps1"'
+
+    - name: Resolve Cinc action outputs (Linux/macOS)
+      id: outputs-unix
+      if: runner.os != 'Windows'
+      shell: bash
+      env:
+        CINC_DISTRIBUTION: ${{ steps.resolve.outputs.distribution }}
+      run: bash "$GITHUB_ACTION_PATH/scripts/outputs-unix.sh"
+
+    - name: Resolve Cinc action outputs (Windows)
+      id: outputs-windows
       if: runner.os == 'Windows'
       shell: pwsh
-      run: |
-        Write-Host "::group::Installing Cinc Workstation v${{ inputs.version }}"
-        . { iwr -useb https://omnitruck.cinc.sh/install.ps1 } | iex
-        install -project cinc-workstation -channel ${{ inputs.channel }} -version ${{ inputs.version }}
-        Write-Host "::endgroup::"
-
-        # The MSI updates the registry PATH but not the current session.
-        # Refresh it so we can verify immediately, then persist to GITHUB_PATH
-        # so subsequent steps can find chef/cinc without their own refresh.
-        $machinePath = [System.Environment]::GetEnvironmentVariable('Path', 'Machine')
-        $userPath    = [System.Environment]::GetEnvironmentVariable('Path', 'User')
-        $env:PATH    = "$machinePath;$userPath"
-
-        # Persist the Cinc bin dir for all later steps
-        $cincBin = (Get-Command cinc -ErrorAction SilentlyContinue)?.Source |
-                   Split-Path -Parent
-        if ($cincBin) {
-          "$cincBin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-        }
-
-        # Verify installation in the same session where PATH is already refreshed
-        cinc --version
+      env:
+        CINC_DISTRIBUTION: ${{ steps.resolve.outputs.distribution }}
+      run: '& "$env:GITHUB_ACTION_PATH/scripts/outputs-windows.ps1"'
 
 branding:
   icon: download
