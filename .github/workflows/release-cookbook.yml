@@ -223,7 +223,7 @@ jobs:
     steps:
       - name: Post text to a Slack channel
         id: notify-slack
-        uses: slackapi/slack-github-action@v3.0.3
+        uses: slackapi/slack-github-action@v3.0.4
         with:
           method: chat.postMessage
           token: ${{ secrets.slack_bot_token }}
@@ -258,7 +258,7 @@ jobs:
 
       - name: Reply to release message with release details
         if: ${{ needs.release-please.outputs.body != '' }}
-        uses: slackapi/slack-github-action@v3.0.3
+        uses: slackapi/slack-github-action@v3.0.4
         with:
           method: chat.postMessage
           token: ${{ secrets.slack_bot_token }}
