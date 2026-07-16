@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [nginx](https://github.com/sous-chefs/nginx) | [Update actions/checkout action to v7](https://github.com/sous-chefs/nginx/pull/668) | Jul 08, 2026 |
-| [cinc-omnibus](https://github.com/sous-chefs/cinc-omnibus) | [chore(main): release 4.2.3](https://github.com/sous-chefs/cinc-omnibus/pull/90) | Jul 07, 2026 |
-| [postgresql](https://github.com/sous-chefs/postgresql) | [chore(deps): update sous-chefs/.github action to v8.0.4](https://github.com/sous-chefs/postgresql/pull/825) | Jul 05, 2026 |
-| [nrpe](https://github.com/sous-chefs/nrpe) | [chore: migrate nrpe to Policyfile](https://github.com/sous-chefs/nrpe/pull/181) | Jul 05, 2026 |
-| [logrotate](https://github.com/sous-chefs/logrotate) | [chore: migrate logrotate to Policyfile](https://github.com/sous-chefs/logrotate/pull/221) | Jul 05, 2026 |
-| [docker](https://github.com/sous-chefs/docker) | [fix: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/docker/pull/1343) | Jul 04, 2026 |
-| [elasticsearch](https://github.com/sous-chefs/elasticsearch) | [chore: migrate dependency resolution to Policyfile](https://github.com/sous-chefs/elasticsearch/pull/841) | Jul 03, 2026 |
-| [aws](https://github.com/sous-chefs/aws) | [chore(deps): update sous-chefs/.github action to v8.0.4](https://github.com/sous-chefs/aws/pull/623) | Jul 03, 2026 |
-| [line](https://github.com/sous-chefs/line) | [chore(deps): update sous-chefs/.github action to v8.0.4](https://github.com/sous-chefs/line/pull/296) | Jul 03, 2026 |
-| [yum-mysql-community](https://github.com/sous-chefs/yum-mysql-community) | [chore: migrate to Policyfile](https://github.com/sous-chefs/yum-mysql-community/pull/89) | Jul 02, 2026 |
+| [users](https://github.com/sous-chefs/users) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/users/pull/523) | Jul 15, 2026 |
+| [aws](https://github.com/sous-chefs/aws) | [chore(deps): update sous-chefs/.github action to v9](https://github.com/sous-chefs/aws/pull/625) | Jul 14, 2026 |
+| [nginx](https://github.com/sous-chefs/nginx) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/nginx/pull/669) | Jul 13, 2026 |
+| [firewall](https://github.com/sous-chefs/firewall) | [chore(main): release 7.0.4](https://github.com/sous-chefs/firewall/pull/319) | Jul 11, 2026 |
+| [java](https://github.com/sous-chefs/java) | [chore(deps): update sous-chefs/.github action to v9](https://github.com/sous-chefs/java/pull/763) | Jul 11, 2026 |
+| [iis](https://github.com/sous-chefs/iis) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/iis/pull/552) | Jul 11, 2026 |
+| [nagios](https://github.com/sous-chefs/nagios) | [feat: Allow explicit Nagios server users with no databag](https://github.com/sous-chefs/nagios/pull/697) | Jul 10, 2026 |
+| [wix](https://github.com/sous-chefs/wix) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/wix/pull/51) | Jul 10, 2026 |
+| [notepadpp](https://github.com/sous-chefs/notepadpp) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/notepadpp/pull/38) | Jul 10, 2026 |
+| [yum](https://github.com/sous-chefs/yum) | [chore(deps): update actions (major)](https://github.com/sous-chefs/yum/pull/251) | Jul 10, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
