@@ -29,7 +29,8 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [users](https://github.com/sous-chefs/users) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/users/pull/523) | Jul 15, 2026 |
+| [sssd_ldap](https://github.com/sous-chefs/sssd_ldap) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/sssd_ldap/pull/88) | Jul 19, 2026 |
+| [users](https://github.com/sous-chefs/users) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/users/pull/523) | Jul 17, 2026 |
 | [aws](https://github.com/sous-chefs/aws) | [chore(deps): update sous-chefs/.github action to v9](https://github.com/sous-chefs/aws/pull/625) | Jul 14, 2026 |
 | [nginx](https://github.com/sous-chefs/nginx) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/nginx/pull/669) | Jul 13, 2026 |
 | [firewall](https://github.com/sous-chefs/firewall) | [chore(main): release 7.0.4](https://github.com/sous-chefs/firewall/pull/319) | Jul 11, 2026 |
@@ -38,7 +39,6 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 | [nagios](https://github.com/sous-chefs/nagios) | [feat: Allow explicit Nagios server users with no databag](https://github.com/sous-chefs/nagios/pull/697) | Jul 10, 2026 |
 | [wix](https://github.com/sous-chefs/wix) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/wix/pull/51) | Jul 10, 2026 |
 | [notepadpp](https://github.com/sous-chefs/notepadpp) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/notepadpp/pull/38) | Jul 10, 2026 |
-| [yum](https://github.com/sous-chefs/yum) | [chore(deps): update actions (major)](https://github.com/sous-chefs/yum/pull/251) | Jul 10, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
