@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
+| [windows_ad](https://github.com/sous-chefs/windows_ad) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/windows_ad/pull/168) | Jul 29, 2026 |
+| [docker](https://github.com/sous-chefs/docker) | [chore(deps): update sous-chefs/.github action to v9](https://github.com/sous-chefs/docker/pull/1345) | Jul 28, 2026 |
+| [git](https://github.com/sous-chefs/git) | [chore(main): release 13.0.1](https://github.com/sous-chefs/git/pull/220) | Jul 28, 2026 |
+| [nagios](https://github.com/sous-chefs/nagios) | [chore(deps): update actions/stale action to v11](https://github.com/sous-chefs/nagios/pull/711) | Jul 28, 2026 |
+| [aws](https://github.com/sous-chefs/aws) | [chore(deps): update sous-chefs/.github action to v9](https://github.com/sous-chefs/aws/pull/625) | Jul 26, 2026 |
+| [firewall](https://github.com/sous-chefs/firewall) | [chore(main): release 7.0.4](https://github.com/sous-chefs/firewall/pull/319) | Jul 23, 2026 |
 | [sssd_ldap](https://github.com/sous-chefs/sssd_ldap) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/sssd_ldap/pull/88) | Jul 19, 2026 |
 | [users](https://github.com/sous-chefs/users) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/users/pull/523) | Jul 17, 2026 |
-| [aws](https://github.com/sous-chefs/aws) | [chore(deps): update sous-chefs/.github action to v9](https://github.com/sous-chefs/aws/pull/625) | Jul 14, 2026 |
 | [nginx](https://github.com/sous-chefs/nginx) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/nginx/pull/669) | Jul 13, 2026 |
-| [firewall](https://github.com/sous-chefs/firewall) | [chore(main): release 7.0.4](https://github.com/sous-chefs/firewall/pull/319) | Jul 11, 2026 |
 | [java](https://github.com/sous-chefs/java) | [chore(deps): update sous-chefs/.github action to v9](https://github.com/sous-chefs/java/pull/763) | Jul 11, 2026 |
-| [iis](https://github.com/sous-chefs/iis) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/iis/pull/552) | Jul 11, 2026 |
-| [nagios](https://github.com/sous-chefs/nagios) | [feat: Allow explicit Nagios server users with no databag](https://github.com/sous-chefs/nagios/pull/697) | Jul 10, 2026 |
-| [wix](https://github.com/sous-chefs/wix) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/wix/pull/51) | Jul 10, 2026 |
-| [notepadpp](https://github.com/sous-chefs/notepadpp) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/notepadpp/pull/38) | Jul 10, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
