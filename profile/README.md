@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
+| [postfix](https://github.com/sous-chefs/postfix) | [chore(main): release 7.0.3](https://github.com/sous-chefs/postfix/pull/243) | Aug 05, 2026 |
+| [ufw](https://github.com/sous-chefs/ufw) | [fix: migrate to Policyfile](https://github.com/sous-chefs/ufw/pull/102) | Aug 03, 2026 |
+| [cinc-omnibus](https://github.com/sous-chefs/cinc-omnibus) | [chore(main): release 4.3.0](https://github.com/sous-chefs/cinc-omnibus/pull/93) | Aug 02, 2026 |
+| [kubernetes](https://github.com/sous-chefs/kubernetes) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/kubernetes/pull/79) | Aug 01, 2026 |
+| [certificate](https://github.com/sous-chefs/certificate) | [chore(deps): update sous-chefs/.github action to v9](https://github.com/sous-chefs/certificate/pull/216) | Jul 31, 2026 |
+| [java](https://github.com/sous-chefs/java) | [chore(deps): update sous-chefs/.github action to v9](https://github.com/sous-chefs/java/pull/763) | Jul 31, 2026 |
+| [postgresql](https://github.com/sous-chefs/postgresql) | [chore(main): release 13.0.5](https://github.com/sous-chefs/postgresql/pull/832) | Jul 30, 2026 |
+| [appveyor-ci](https://github.com/sous-chefs/appveyor-ci) | [Update actions/stale action to v11](https://github.com/sous-chefs/appveyor-ci/pull/174) | Jul 30, 2026 |
+| [nagios](https://github.com/sous-chefs/nagios) | [chore(main): release 14.0.0](https://github.com/sous-chefs/nagios/pull/709) | Jul 30, 2026 |
 | [windows_ad](https://github.com/sous-chefs/windows_ad) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/windows_ad/pull/168) | Jul 29, 2026 |
-| [docker](https://github.com/sous-chefs/docker) | [chore(deps): update sous-chefs/.github action to v9](https://github.com/sous-chefs/docker/pull/1345) | Jul 28, 2026 |
-| [git](https://github.com/sous-chefs/git) | [chore(main): release 13.0.1](https://github.com/sous-chefs/git/pull/220) | Jul 28, 2026 |
-| [nagios](https://github.com/sous-chefs/nagios) | [chore(deps): update actions/stale action to v11](https://github.com/sous-chefs/nagios/pull/711) | Jul 28, 2026 |
-| [aws](https://github.com/sous-chefs/aws) | [chore(deps): update sous-chefs/.github action to v9](https://github.com/sous-chefs/aws/pull/625) | Jul 26, 2026 |
-| [firewall](https://github.com/sous-chefs/firewall) | [chore(main): release 7.0.4](https://github.com/sous-chefs/firewall/pull/319) | Jul 23, 2026 |
-| [sssd_ldap](https://github.com/sous-chefs/sssd_ldap) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/sssd_ldap/pull/88) | Jul 19, 2026 |
-| [users](https://github.com/sous-chefs/users) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/users/pull/523) | Jul 17, 2026 |
-| [nginx](https://github.com/sous-chefs/nginx) | [Update sous-chefs/.github action to v9](https://github.com/sous-chefs/nginx/pull/669) | Jul 13, 2026 |
-| [java](https://github.com/sous-chefs/java) | [chore(deps): update sous-chefs/.github action to v9](https://github.com/sous-chefs/java/pull/763) | Jul 11, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
