@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [aws](https://github.com/sous-chefs/aws) | [chore(deps): update actions/stale action to v11](https://github.com/sous-chefs/aws/pull/626) | Aug 26, 2026 |
+| [apt](https://github.com/sous-chefs/apt) | [Update actions/stale action to v11](https://github.com/sous-chefs/apt/pull/746) | Sep 01, 2026 |
+| [nginx](https://github.com/sous-chefs/nginx) | [chore(main): release 12.3.3](https://github.com/sous-chefs/nginx/pull/672) | Aug 31, 2026 |
+| [nfs](https://github.com/sous-chefs/nfs) | [Update actions/stale action to v11](https://github.com/sous-chefs/nfs/pull/173) | Aug 30, 2026 |
+| [rvm](https://github.com/sous-chefs/rvm) | [chore(deps): update actions/stale action to v11](https://github.com/sous-chefs/rvm/pull/477) | Aug 30, 2026 |
+| [mysql](https://github.com/sous-chefs/mysql) | [Update actions/stale action to v11](https://github.com/sous-chefs/mysql/pull/749) | Aug 29, 2026 |
+| [docker](https://github.com/sous-chefs/docker) | [chore(main): release 12.0.2](https://github.com/sous-chefs/docker/pull/1348) | Aug 29, 2026 |
+| [nagios](https://github.com/sous-chefs/nagios) | [chore(main): release 14.0.0](https://github.com/sous-chefs/nagios/pull/709) | Aug 28, 2026 |
+| [aws](https://github.com/sous-chefs/aws) | [chore(deps): update actions/stale action to v11](https://github.com/sous-chefs/aws/pull/626) | Aug 28, 2026 |
 | [git](https://github.com/sous-chefs/git) | [chore(deps): update actions/stale action to v11](https://github.com/sous-chefs/git/pull/221) | Aug 19, 2026 |
-| [docker](https://github.com/sous-chefs/docker) | [chore(main): release 12.0.2](https://github.com/sous-chefs/docker/pull/1348) | Aug 18, 2026 |
 | [graphite](https://github.com/sous-chefs/graphite) | [Update actions/stale action to v11](https://github.com/sous-chefs/graphite/pull/422) | Aug 17, 2026 |
-| [kafka](https://github.com/sous-chefs/kafka) | [chore(main): release 4.0.1](https://github.com/sous-chefs/kafka/pull/256) | Aug 17, 2026 |
-| [sublimechef](https://github.com/sous-chefs/sublimechef) | [Update dependency python to v3.14.7](https://github.com/sous-chefs/sublimechef/pull/74) | Aug 17, 2026 |
-| [nexus](https://github.com/sous-chefs/nexus) | [chore(main): release 5.0.1](https://github.com/sous-chefs/nexus/pull/78) | Aug 17, 2026 |
-| [sssd_ldap](https://github.com/sous-chefs/sssd_ldap) | [ci: migrate tests to Policyfile](https://github.com/sous-chefs/sssd_ldap/pull/90) | Aug 17, 2026 |
-| [bind](https://github.com/sous-chefs/bind) | [ci: migrate tests to Policyfile](https://github.com/sous-chefs/bind/pull/208) | Aug 17, 2026 |
-| [powershell](https://github.com/sous-chefs/powershell) | [ci: migrate tests to Policyfile](https://github.com/sous-chefs/powershell/pull/213) | Aug 17, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
