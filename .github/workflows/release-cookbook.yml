@@ -5,7 +5,7 @@ name: release-please
   workflow_call:
     inputs:
       publish_oci:
-        description: Publish signed OCI cookbooks to GHCR (non-blocking pilot).
+        description: Publish OCI cookbooks and SPDX to GHCR (non-blocking).
         required: false
         type: boolean
         default: false
@@ -230,8 +230,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-      attestations: write
-      id-token: write
 
   notify-slack:
     needs: [release-please, publish_workstation, publish_cinc_cli]
@@ -240,7 +238,7 @@ jobs:
     steps:
       - name: Post text to a Slack channel
         id: notify-slack
-        uses: slackapi/slack-github-action@v3.0.5
+        uses: slackapi/slack-github-action@v3
         with:
           method: chat.postMessage
           token: ${{ secrets.slack_bot_token }}
@@ -275,7 +273,7 @@ jobs:
 
       - name: Reply to release message with release details
         if: ${{ needs.release-please.outputs.body != '' }}
-        uses: slackapi/slack-github-action@v3.0.5
+        uses: slackapi/slack-github-action@v3
         with:
           method: chat.postMessage
           token: ${{ secrets.slack_bot_token }}
