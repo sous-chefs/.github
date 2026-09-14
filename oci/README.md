@@ -6,6 +6,12 @@ archive attestations continue independently. OCI errors produce a warning and
 step summary without failing the release. A failed OCI path stops before later
 OCI steps; it never substitutes an unsigned artifact for a verified one.
 
+The release workflow delegates to `publish-cookbook-oci.yml` using a local reusable
+workflow reference, so both execute from the same shared-repository commit. The
+only input is `release_tag`. Packaging, evidence, concurrency, non-blocking failure
+handling and reporting belong to the OCI workflow. Its OIDC identity is the signer
+identity consumers must verify.
+
 ## Artifact format
 
 The public repository is `ghcr.io/sous-chefs/cookbooks/<cookbook>`. Cookbook
@@ -115,7 +121,7 @@ Replace the example values before running:
 ```bash
 repository=ghcr.io/sous-chefs/cookbooks/nginx
 digest=sha256:RELEASE_MANIFEST_DIGEST
-workflow=sous-chefs/.github/.github/workflows/release-cookbook.yml
+workflow=sous-chefs/.github/.github/workflows/publish-cookbook-oci.yml
 workflow_ref=FULL_SHARED_WORKFLOW_COMMIT
 subject="$repository@$digest"
 

@@ -28,7 +28,7 @@ class ArtifactTests(unittest.TestCase):
         self.args = argparse.Namespace(work=self.work, name='example', tag='v1.2.3',
                                        repository='ghcr.io/sous-chefs/cookbooks/example',
                                        commit='a' * 40, source_repository='sous-chefs/example',
-                                       workflow_ref='sous-chefs/.github/.github/workflows/release-cookbook.yml@v10',
+                                       workflow_ref='sous-chefs/.github/.github/workflows/publish-cookbook-oci.yml@v10',
                                        workflow_sha='b' * 40)
         a.prepare(self.args)
         self.syft = {'spdxVersion': 'SPDX-2.3', 'SPDXID': 'SPDXRef-DOCUMENT',

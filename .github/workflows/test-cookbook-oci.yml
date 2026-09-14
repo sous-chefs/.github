@@ -6,6 +6,7 @@ name: Test cookbook OCI publishing
     paths:
       - oci/**
       - .github/workflows/release-cookbook.yml
+      - .github/workflows/publish-cookbook-oci.yml
       - .github/workflows/test-cookbook-oci.yml
   workflow_dispatch:
 
@@ -45,6 +46,7 @@ jobs:
           go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.12
           -pyflakes=''
           .github/workflows/release-cookbook.yml
+          .github/workflows/publish-cookbook-oci.yml
           .github/workflows/test-cookbook-oci.yml
       - name: Real packaging, registry and signature qualification
         run: python3 oci/integration.py

@@ -63,7 +63,7 @@ def main():
             args = argparse.Namespace(work=work, name='example', tag='v1.2.3',
                                       repository=repository, commit='a' * 40,
                                       source_repository='sous-chefs/example',
-                                      workflow_ref='sous-chefs/.github/.github/workflows/release-cookbook.yml@fixture',
+                                      workflow_ref='sous-chefs/.github/.github/workflows/publish-cookbook-oci.yml@fixture',
                                       workflow_sha='b' * 40)
             a.prepare(args)
             # Compare exact JSON bytes with the independent Cinc Registry ORAS call.
