@@ -19,7 +19,7 @@ jobs:
       packages: write
     steps:
       - name: Checkout the release tag
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: refs/tags/${{ inputs.release_tag }}
           path: cookbooks/${{ github.event.repository.name }}
@@ -68,10 +68,10 @@ jobs:
           SYFT_FILE_METADATA_DIGESTS: sha256
 
       - name: Set up ORAS
-        uses: oras-project/setup-oras@v1
+        uses: oras-project/setup-oras@v2
 
       - name: Log in to GHCR
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
