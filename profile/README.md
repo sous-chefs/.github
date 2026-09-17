@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [postgresql](https://github.com/sous-chefs/postgresql) | [fix: linking of pglib dep tree](https://github.com/sous-chefs/postgresql/pull/836) | Sep 09, 2026 |
-| [nagios](https://github.com/sous-chefs/nagios) | [chore(deps): update apache2 cookbook to v10](https://github.com/sous-chefs/nagios/pull/712) | Sep 09, 2026 |
-| [rsyslog](https://github.com/sous-chefs/rsyslog) | [feat: Add service actions to client and server resources](https://github.com/sous-chefs/rsyslog/pull/266) | Sep 09, 2026 |
-| [docker](https://github.com/sous-chefs/docker) | [chore(main): release 12.0.2](https://github.com/sous-chefs/docker/pull/1348) | Sep 09, 2026 |
-| [etcd](https://github.com/sous-chefs/etcd) | [chore(main): release 12.0.0](https://github.com/sous-chefs/etcd/pull/210) | Sep 08, 2026 |
-| [nginx](https://github.com/sous-chefs/nginx) | [chore(main): release 12.3.3](https://github.com/sous-chefs/nginx/pull/672) | Sep 07, 2026 |
-| [mysql](https://github.com/sous-chefs/mysql) | [Update actions/stale action to v11](https://github.com/sous-chefs/mysql/pull/749) | Sep 07, 2026 |
-| [apt](https://github.com/sous-chefs/apt) | [Update actions/stale action to v11](https://github.com/sous-chefs/apt/pull/746) | Sep 01, 2026 |
-| [nfs](https://github.com/sous-chefs/nfs) | [Update actions/stale action to v11](https://github.com/sous-chefs/nfs/pull/173) | Aug 30, 2026 |
-| [rvm](https://github.com/sous-chefs/rvm) | [chore(deps): update actions/stale action to v11](https://github.com/sous-chefs/rvm/pull/477) | Aug 30, 2026 |
+| [aws](https://github.com/sous-chefs/aws) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/aws/pull/628) | Sep 15, 2026 |
+| [sc-chruby](https://github.com/sous-chefs/sc-chruby) | [Update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/sc-chruby/pull/87) | Sep 15, 2026 |
+| [zabbix-agent](https://github.com/sous-chefs/zabbix-agent) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/zabbix-agent/pull/105) | Sep 15, 2026 |
+| [yum-remi-chef](https://github.com/sous-chefs/yum-remi-chef) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/yum-remi-chef/pull/88) | Sep 15, 2026 |
+| [yum-mysql-community](https://github.com/sous-chefs/yum-mysql-community) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/yum-mysql-community/pull/93) | Sep 15, 2026 |
+| [yum-fedora](https://github.com/sous-chefs/yum-fedora) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/yum-fedora/pull/48) | Sep 15, 2026 |
+| [yum-erlang_solutions](https://github.com/sous-chefs/yum-erlang_solutions) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/yum-erlang_solutions/pull/61) | Sep 15, 2026 |
+| [yum-epel](https://github.com/sous-chefs/yum-epel) | [Update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/yum-epel/pull/126) | Sep 15, 2026 |
+| [yum-elrepo](https://github.com/sous-chefs/yum-elrepo) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/yum-elrepo/pull/64) | Sep 15, 2026 |
+| [yum-centos](https://github.com/sous-chefs/yum-centos) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/yum-centos/pull/93) | Sep 15, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
