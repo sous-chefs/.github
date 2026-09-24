@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [aws](https://github.com/sous-chefs/aws) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/aws/pull/628) | Sep 15, 2026 |
+| [aws](https://github.com/sous-chefs/aws) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/aws/pull/628) | Sep 23, 2026 |
+| [ufw](https://github.com/sous-chefs/ufw) | [Update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/ufw/pull/108) | Sep 22, 2026 |
+| [grafana](https://github.com/sous-chefs/grafana) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/grafana/pull/499) | Sep 20, 2026 |
+| [homebrew](https://github.com/sous-chefs/homebrew) | [Update actions/stale action to v11](https://github.com/sous-chefs/homebrew/pull/220) | Sep 20, 2026 |
+| [openssh](https://github.com/sous-chefs/openssh) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/openssh/pull/225) | Sep 18, 2026 |
 | [sc-chruby](https://github.com/sous-chefs/sc-chruby) | [Update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/sc-chruby/pull/87) | Sep 15, 2026 |
 | [zabbix-agent](https://github.com/sous-chefs/zabbix-agent) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/zabbix-agent/pull/105) | Sep 15, 2026 |
 | [yum-remi-chef](https://github.com/sous-chefs/yum-remi-chef) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/yum-remi-chef/pull/88) | Sep 15, 2026 |
 | [yum-mysql-community](https://github.com/sous-chefs/yum-mysql-community) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/yum-mysql-community/pull/93) | Sep 15, 2026 |
 | [yum-fedora](https://github.com/sous-chefs/yum-fedora) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/yum-fedora/pull/48) | Sep 15, 2026 |
-| [yum-erlang_solutions](https://github.com/sous-chefs/yum-erlang_solutions) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/yum-erlang_solutions/pull/61) | Sep 15, 2026 |
-| [yum-epel](https://github.com/sous-chefs/yum-epel) | [Update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/yum-epel/pull/126) | Sep 15, 2026 |
-| [yum-elrepo](https://github.com/sous-chefs/yum-elrepo) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/yum-elrepo/pull/64) | Sep 15, 2026 |
-| [yum-centos](https://github.com/sous-chefs/yum-centos) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/yum-centos/pull/93) | Sep 15, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
