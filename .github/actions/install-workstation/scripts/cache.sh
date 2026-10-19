@@ -4,6 +4,7 @@ set -euo pipefail
 case "$1" in
   resolve)
     # Cache only Ubuntu installations; preserve the installer on other platforms.
+    # shellcheck source=/dev/null
     source "${CINC_OS_RELEASE:-/etc/os-release}"
     if [[ "$ID" != ubuntu ]]; then
       exit 0
@@ -13,8 +14,10 @@ case "$1" in
       --data-urlencode "m=$(uname -m)" --data-urlencode "v=$CINC_VERSION")
     resolved=$(awk '$1 == "version" {print $2}' <<< "$metadata")
     checksum=$(awk '$1 == "sha256" {print $2}' <<< "$metadata")
-    [[ "$resolved" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
-    [[ "$checksum" =~ ^[a-f0-9]{64}$ ]]
+    if [[ ! "$resolved" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || [[ ! "$checksum" =~ ^[a-f0-9]{64}$ ]]; then
+      echo '::error::Invalid Workstation metadata; refusing to create a cache key.'
+      exit 1
+    fi
     {
       echo "enabled=true"
       echo "version=$resolved"
