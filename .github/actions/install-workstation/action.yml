@@ -17,22 +17,79 @@ inputs:
     description: 'Release channel: stable or current'
     required: false
     default: 'stable'
+  cache:
+    description: 'Cache installed Cinc Workstation on Ubuntu Linux.'
+    required: false
+    default: 'true'
+
+outputs:
+  cache-hit:
+    description: 'Whether an exact installed Workstation cache was restored.'
+    value: ${{ steps.restore.outputs.cache-hit }}
+  version:
+    description: 'Resolved version when Ubuntu caching is enabled.'
+    value: ${{ steps.resolve.outputs.version }}
 
 runs:
   using: composite
   steps:
-    - name: Install Cinc Workstation (Linux/macOS)
-      if: runner.os != 'Windows'
+    - name: Resolve Cinc Workstation cache key
+      id: resolve
+      if: runner.os == 'Linux' && inputs.cache == 'true'
       shell: bash
+      env:
+        CINC_VERSION: ${{ inputs.version }}
+        CINC_CHANNEL: ${{ inputs.channel }}
+      run: bash "$GITHUB_ACTION_PATH/scripts/cache.sh" resolve
+
+    - name: Restore installed Cinc Workstation cache
+      id: restore
+      if: steps.resolve.outputs.enabled == 'true'
+      uses: actions/cache/restore@v5
+      with:
+        path: ${{ steps.resolve.outputs.path }}
+        key: ${{ steps.resolve.outputs.key }}
+
+    - name: Activate cached Cinc Workstation
+      if: steps.restore.outputs.cache-hit == 'true'
+      shell: bash
+      run: bash "$GITHUB_ACTION_PATH/scripts/cache.sh" restore
+
+    - name: Install Cinc Workstation (Linux/macOS)
+      if: runner.os != 'Windows' && steps.restore.outputs.cache-hit != 'true'
+      shell: bash
+      env:
+        CINC_VERSION: ${{ steps.resolve.outputs.version || inputs.version }}
+        CINC_CHANNEL: ${{ inputs.channel }}
       run: |
         set -euo pipefail
-        echo "::group::Installing Cinc Workstation v${{ inputs.version }}"
+        echo "::group::Installing Cinc Workstation v${CINC_VERSION}"
         curl -fsSL https://omnitruck.cinc.sh/install.sh \
-          | sudo bash -s -- -P cinc-workstation -c ${{ inputs.channel }} -v ${{ inputs.version }}
+          | sudo bash -s -- -P cinc-workstation -c "$CINC_CHANNEL" -v "$CINC_VERSION"
         echo "::endgroup::"
 
         # Verify installation
         cinc --version || chef --version
+
+    - name: Verify restored Cinc Workstation
+      if: steps.restore.outputs.cache-hit == 'true'
+      shell: bash
+      run: |
+        cinc --version
+        chef --version
+        /usr/bin/kitchen --version
+
+    - name: Archive installed Cinc Workstation
+      if: steps.resolve.outputs.enabled == 'true' && steps.restore.outputs.cache-hit != 'true'
+      shell: bash
+      run: bash "$GITHUB_ACTION_PATH/scripts/cache.sh" pack
+
+    - name: Save installed Cinc Workstation cache
+      if: steps.resolve.outputs.enabled == 'true' && steps.restore.outputs.cache-hit != 'true'
+      uses: actions/cache/save@v5
+      with:
+        path: ${{ steps.resolve.outputs.path }}
+        key: ${{ steps.resolve.outputs.key }}
 
     - name: Install Cinc Workstation (Windows)
       if: runner.os == 'Windows'
