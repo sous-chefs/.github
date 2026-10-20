@@ -62,6 +62,9 @@ jobs:
           bundler-cache: true
       - name: Run RSpec
         run: |
+          # Omnifetch copies .git while Git background maintenance removes locks.
+          git config --global maintenance.auto false
+          git config --global gc.auto 0
           bundle exec rspec -f j -o tmp/rspec_results.json -f p
         shell: bash
       - name: RSpec Report
