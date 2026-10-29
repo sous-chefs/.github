@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
+| [apache2](https://github.com/sous-chefs/apache2) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/apache2/pull/968) | Oct 28, 2026 |
+| [ntp](https://github.com/sous-chefs/ntp) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/ntp/pull/292) | Oct 27, 2026 |
+| [apt](https://github.com/sous-chefs/apt) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/apt/pull/749) | Oct 24, 2026 |
+| [php](https://github.com/sous-chefs/php) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/php/pull/401) | Oct 23, 2026 |
+| [nginx](https://github.com/sous-chefs/nginx) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/nginx/pull/679) | Oct 22, 2026 |
+| [cinc-omnibus](https://github.com/sous-chefs/cinc-omnibus) | [chore(main): release 5.0.2](https://github.com/sous-chefs/cinc-omnibus/pull/107) | Oct 22, 2026 |
 | [visualstudio](https://github.com/sous-chefs/visualstudio) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/visualstudio/pull/69) | Oct 19, 2026 |
 | [yum-remi-chef](https://github.com/sous-chefs/yum-remi-chef) | [chore(main): release 9.2.0](https://github.com/sous-chefs/yum-remi-chef/pull/95) | Oct 19, 2026 |
 | [aws](https://github.com/sous-chefs/aws) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/aws/pull/636) | Oct 19, 2026 |
 | [yum-almalinux](https://github.com/sous-chefs/yum-almalinux) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/yum-almalinux/pull/43) | Oct 19, 2026 |
-| [valkey](https://github.com/sous-chefs/valkey) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/valkey/pull/9) | Oct 19, 2026 |
-| [grafana-alloy](https://github.com/sous-chefs/grafana-alloy) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/grafana-alloy/pull/9) | Oct 19, 2026 |
-| [firewalld](https://github.com/sous-chefs/firewalld) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/firewalld/pull/15) | Oct 19, 2026 |
-| [winlogbeats](https://github.com/sous-chefs/winlogbeats) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/winlogbeats/pull/32) | Oct 19, 2026 |
-| [syslog_ng](https://github.com/sous-chefs/syslog_ng) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/syslog_ng/pull/101) | Oct 19, 2026 |
-| [sc_vscode](https://github.com/sous-chefs/sc_vscode) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/sc_vscode/pull/111) | Oct 19, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
