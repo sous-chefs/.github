@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
+| [nginx](https://github.com/sous-chefs/nginx) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/nginx/pull/679) | Nov 03, 2026 |
+| [java](https://github.com/sous-chefs/java) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/java/pull/767) | Nov 03, 2026 |
+| [aws](https://github.com/sous-chefs/aws) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/aws/pull/636) | Nov 02, 2026 |
+| [github](https://github.com/sous-chefs/github) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/github/pull/68) | Nov 02, 2026 |
+| [php](https://github.com/sous-chefs/php) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/php/pull/401) | Nov 01, 2026 |
+| [elasticsearch](https://github.com/sous-chefs/elasticsearch) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/elasticsearch/pull/846) | Oct 30, 2026 |
 | [apache2](https://github.com/sous-chefs/apache2) | [chore(deps): update sous-chefs/.github action to v9.0.1](https://github.com/sous-chefs/apache2/pull/968) | Oct 28, 2026 |
 | [ntp](https://github.com/sous-chefs/ntp) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/ntp/pull/292) | Oct 27, 2026 |
 | [apt](https://github.com/sous-chefs/apt) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/apt/pull/749) | Oct 24, 2026 |
-| [php](https://github.com/sous-chefs/php) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/php/pull/401) | Oct 23, 2026 |
-| [nginx](https://github.com/sous-chefs/nginx) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/nginx/pull/679) | Oct 22, 2026 |
 | [cinc-omnibus](https://github.com/sous-chefs/cinc-omnibus) | [chore(main): release 5.0.2](https://github.com/sous-chefs/cinc-omnibus/pull/107) | Oct 22, 2026 |
-| [visualstudio](https://github.com/sous-chefs/visualstudio) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/visualstudio/pull/69) | Oct 19, 2026 |
-| [yum-remi-chef](https://github.com/sous-chefs/yum-remi-chef) | [chore(main): release 9.2.0](https://github.com/sous-chefs/yum-remi-chef/pull/95) | Oct 19, 2026 |
-| [aws](https://github.com/sous-chefs/aws) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/aws/pull/636) | Oct 19, 2026 |
-| [yum-almalinux](https://github.com/sous-chefs/yum-almalinux) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/yum-almalinux/pull/43) | Oct 19, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
