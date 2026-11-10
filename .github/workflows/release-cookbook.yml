@@ -13,6 +13,7 @@ name: release-please
         description: >
           Publisher used for Chef Supermarket releases. `workstation` uses
           Cinc Workstation and knife. `cinc-cli` uses the experimental Cinc CLI.
+          `none` disables Supermarket publishing.
         required: false
         type: string
         default: workstation
@@ -45,10 +46,10 @@ jobs:
           SUPERMARKET_PUBLISHER: ${{ inputs.supermarket_publisher }}
         run: |
           case "${SUPERMARKET_PUBLISHER}" in
-            workstation|cinc-cli)
+            workstation|cinc-cli|none)
               ;;
             *)
-              echo "::error::supermarket_publisher must be 'workstation' or 'cinc-cli'"
+              echo "::error::supermarket_publisher must be 'workstation', 'cinc-cli', or 'none'"
               exit 1
               ;;
           esac

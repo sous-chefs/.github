@@ -2,6 +2,8 @@
 
 Enable `publish_oci: true` when calling `release-cookbook.yml`. It delegates to
 `publish-cookbook-oci.yml`, passing the release tag. OCI failures are non-blocking.
+To publish only OCI artifacts, also set `supermarket_publisher: none`. The default
+continues to publish to Supermarket using Cinc Workstation.
 
 The workflow has three jobs to do:
 
