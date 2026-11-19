@@ -29,16 +29,16 @@ from Chef or simply no longer wants the burden of maintaining it alone. No cookb
 <!-- COOKBOOKS_START -->
 | Cookbook | Latest Change | Last Updated |
 | --- | --- | --- |
-| [firewall](https://github.com/sous-chefs/firewall) | [ci: publish cookbook as OCI artifact](https://github.com/sous-chefs/firewall/pull/333) | Nov 12, 2026 |
-| [resharper](https://github.com/sous-chefs/resharper) | [chore(main): release 3.1.0](https://github.com/sous-chefs/resharper/pull/42) | Nov 12, 2026 |
-| [bot-trainer](https://github.com/sous-chefs/bot-trainer) | [chore(main): release bot-trainer 0.1.10](https://github.com/sous-chefs/bot-trainer/pull/64) | Nov 12, 2026 |
-| [chef_auto_accumulator](https://github.com/sous-chefs/chef_auto_accumulator) | [chore(main): release chef_auto_accumulator 0.7.3](https://github.com/sous-chefs/chef_auto_accumulator/pull/40) | Nov 12, 2026 |
-| [passenger_apache2](https://github.com/sous-chefs/passenger_apache2) | [chore(main): release 4.0.17](https://github.com/sous-chefs/passenger_apache2/pull/131) | Nov 12, 2026 |
-| [valkey](https://github.com/sous-chefs/valkey) | [chore(deps): update actions (major)](https://github.com/sous-chefs/valkey/pull/7) | Nov 12, 2026 |
-| [sublimechef](https://github.com/sous-chefs/sublimechef) | [Update DavidAnson/markdownlint-cli2-action action to v25](https://github.com/sous-chefs/sublimechef/pull/78) | Nov 12, 2026 |
-| [repo-management](https://github.com/sous-chefs/repo-management) | [Update DavidAnson/markdownlint-cli2-action action to v25](https://github.com/sous-chefs/repo-management/pull/96) | Nov 12, 2026 |
-| [meta](https://github.com/sous-chefs/meta) | [Update Actions (major)](https://github.com/sous-chefs/meta/pull/147) | Nov 12, 2026 |
-| [grafana-alloy](https://github.com/sous-chefs/grafana-alloy) | [chore(deps): update actions (major)](https://github.com/sous-chefs/grafana-alloy/pull/7) | Nov 12, 2026 |
+| [yum-epel](https://github.com/sous-chefs/yum-epel) | [ci: publish cookbook OCI artifacts](https://github.com/sous-chefs/yum-epel/pull/125) | Nov 17, 2026 |
+| [php](https://github.com/sous-chefs/php) | [chore(main): release 11.0.0](https://github.com/sous-chefs/php/pull/403) | Nov 16, 2026 |
+| [hashicorp-vault](https://github.com/sous-chefs/hashicorp-vault) | [chore(main): release 7.0.0](https://github.com/sous-chefs/hashicorp-vault/pull/289) | Nov 14, 2026 |
+| [firefox](https://github.com/sous-chefs/firefox) | [ci: publish cookbook as OCI artifact](https://github.com/sous-chefs/firefox/pull/60) | Nov 14, 2026 |
+| [docker](https://github.com/sous-chefs/docker) | [ci: publish cookbook as OCI artifact](https://github.com/sous-chefs/docker/pull/1349) | Nov 14, 2026 |
+| [jenkins](https://github.com/sous-chefs/jenkins) | [ci: publish OCI artifacts](https://github.com/sous-chefs/jenkins/pull/869) | Nov 14, 2026 |
+| [line](https://github.com/sous-chefs/line) | [ci: publish OCI artifacts](https://github.com/sous-chefs/line/pull/302) | Nov 14, 2026 |
+| [bind](https://github.com/sous-chefs/bind) | [chore(ci): cancel superseded pull request runs](https://github.com/sous-chefs/bind/pull/211) | Nov 14, 2026 |
+| [postgresql](https://github.com/sous-chefs/postgresql) | [ci: publish OCI artifacts](https://github.com/sous-chefs/postgresql/pull/837) | Nov 14, 2026 |
+| [varnish](https://github.com/sous-chefs/varnish) | [ci: publish cookbook OCI artifacts](https://github.com/sous-chefs/varnish/pull/279) | Nov 14, 2026 |
 <!-- COOKBOOKS_END -->
 
 ---
