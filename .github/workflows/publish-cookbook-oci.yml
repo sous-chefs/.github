@@ -17,6 +17,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
     steps:
       - name: Checkout the release tag
         uses: actions/checkout@v7
@@ -78,6 +80,7 @@ jobs:
           password: ${{ github.token }}
 
       - name: Push cookbook and SPDX
+        id: push
         working-directory: oci-output
         env:
           COOKBOOK: ${{ github.event.repository.name }}
@@ -90,11 +93,22 @@ jobs:
             --annotation "org.opencontainers.image.source=https://github.com/$GITHUB_REPOSITORY" \
             --format json \
             cookbook.tar.gz:application/vnd.oci.image.layer.v1.tar+gzip > pushed.json
-          digest=$(jq -r '.digest' pushed.json)
+          digest=$(jq -er '.digest' pushed.json)
           oras attach "$repository@$digest" \
             --artifact-type application/spdx+json \
             sbom.spdx.json:application/spdx+json
+          echo "repository=$repository" >> "$GITHUB_OUTPUT"
+          echo "digest=$digest" >> "$GITHUB_OUTPUT"
           echo "Published cookbook and SPDX: $repository@$digest" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Attest the SPDX inventory for the published cookbook
+        uses: actions/attest@v4
+        with:
+          subject-name: ${{ steps.push.outputs.repository }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          sbom-path: oci-output/sbom.spdx.json
+          push-to-registry: true
+          create-storage-record: false
 
       - name: Report publishing failure
         if: ${{ failure() }}
