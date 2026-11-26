@@ -17,6 +17,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
     steps:
       - name: Checkout the release tag
         uses: actions/checkout@v7
@@ -70,6 +72,32 @@ jobs:
       - name: Set up ORAS
         uses: oras-project/setup-oras@v2
 
+      - name: Prepare the cookbook manifest locally
+        id: manifest
+        working-directory: oci-output
+        env:
+          COOKBOOK: ${{ github.event.repository.name }}
+        run: |
+          repository="ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/cookbooks/$COOKBOOK"
+          oras push --oci-layout layout:prepared \
+            --artifact-type application/vnd.cinc.cookbook.v1+json \
+            --annotation org.opencontainers.image.created=1970-01-01T00:00:00Z \
+            --annotation "org.opencontainers.image.source=https://github.com/$GITHUB_REPOSITORY" \
+            --format json \
+            cookbook.tar.gz:application/vnd.oci.image.layer.v1.tar+gzip > manifest.json
+          digest=$(jq -er '.digest' manifest.json)
+          echo "repository=$repository" >> "$GITHUB_OUTPUT"
+          echo "digest=$digest" >> "$GITHUB_OUTPUT"
+
+      - name: Sign the SPDX inventory before upload
+        id: attest
+        uses: actions/attest@v4
+        with:
+          subject-name: ${{ steps.manifest.outputs.repository }}
+          subject-digest: ${{ steps.manifest.outputs.digest }}
+          sbom-path: oci-output/sbom.spdx.json
+          create-storage-record: false
+
       - name: Log in to GHCR
         uses: docker/login-action@v4
         with:
@@ -77,24 +105,22 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ github.token }}
 
-      - name: Push cookbook and SPDX
+      - name: Publish the signed cookbook and tag the release
         working-directory: oci-output
         env:
-          COOKBOOK: ${{ github.event.repository.name }}
+          REPOSITORY: ${{ steps.manifest.outputs.repository }}
+          DIGEST: ${{ steps.manifest.outputs.digest }}
+          BUNDLE: ${{ steps.attest.outputs.bundle-path }}
           VERSION: ${{ steps.package.outputs.version }}
         run: |
-          repository="ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/cookbooks/$COOKBOOK"
-          oras push "$repository:$VERSION" \
-            --artifact-type application/vnd.cinc.cookbook.v1+json \
-            --annotation org.opencontainers.image.created=1970-01-01T00:00:00Z \
-            --annotation "org.opencontainers.image.source=https://github.com/$GITHUB_REPOSITORY" \
-            --format json \
-            cookbook.tar.gz:application/vnd.oci.image.layer.v1.tar+gzip > pushed.json
-          digest=$(jq -r '.digest' pushed.json)
-          oras attach "$repository@$digest" \
-            --artifact-type application/spdx+json \
-            sbom.spdx.json:application/spdx+json
-          echo "Published cookbook and SPDX: $repository@$digest" >> "$GITHUB_STEP_SUMMARY"
+          cp "$BUNDLE" attestation.sigstore.json
+          bundle_type=$(jq -er '.mediaType' attestation.sigstore.json)
+          subject="$REPOSITORY@$DIGEST"
+          oras cp --from-oci-layout "layout@$DIGEST" "$subject"
+          oras attach "$subject" --artifact-type "$bundle_type" "attestation.sigstore.json:$bundle_type"
+          oras attach "$subject" --artifact-type application/spdx+json sbom.spdx.json:application/spdx+json
+          oras tag "$subject" "$VERSION"
+          echo "Published signed cookbook $REPOSITORY:$VERSION ($DIGEST)" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Report publishing failure
         if: ${{ failure() }}

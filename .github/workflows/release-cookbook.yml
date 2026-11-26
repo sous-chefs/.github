@@ -231,6 +231,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
 
   notify-slack:
     needs: [release-please, publish_workstation, publish_cinc_cli]
