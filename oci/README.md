@@ -11,10 +11,12 @@ The workflow follows these steps:
    cookbook staging helper as `knife supermarket share`. This preserves
    `chefignore`, generated metadata and cookbook directory layout.
 2. Generate SPDX with [Anchore's SBOM action](https://github.com/anchore/sbom-action).
-3. Publish with the [official ORAS tooling](https://github.com/oras-project/setup-oras):
-   `oras push` for the cookbook and `oras attach` for its SPDX document.
-4. Sign the same SPDX inventory with GitHub Actions and publish the attestation
-   to GHCR, using the manifest digest returned by the push as its subject.
+3. Build the cookbook manifest in a local OCI layout and sign the SPDX inventory
+   for its digest with GitHub Actions.
+4. Copy the signed cookbook to GHCR by digest, attach the Sigstore bundle and SPDX
+   document, then publish the version tag. A signing failure skips the upload.
+   An interruption during upload can leave content in GHCR by digest, but the
+   workflow sets the release tag only after both attachments succeed.
 
 Actions follow their major versions. Workstation and the tool versions supplied
 by the actions can update without changing each cookbook repository.
